@@ -1,0 +1,19 @@
+Purpose summaries
+src/Compute.jl:D01: Return a fresh objective vector that selects the model's protein-output flux.
+src/Compute.jl:D02: Return independent bound arrays and the correctly shaped supply constraints for the requested allocation strategy.
+src/Compute.jl:D03: Solve both allocation strategies for every input budget and return ordered protein-production rates in micromolar/h.
+src/Compute.jl:TODO1: Build the protein objective using the model's reaction count and protein column.
+src/Compute.jl:TODO2: Validate the scenario and construct copied bounds and allocation inequalities with the documented dimensions.
+src/Compute.jl:TODO3: Validate budgets, solve both strategies, check successful optimization, and collect converted production rates in input order.
+src/Solver.jl:D01: Maximize a linear objective subject to steady-state balances, flux bounds, and optional inequalities, returning usable fluxes only for an optimal solve.
+src/Solver.jl:D02: Check an optimal solution's feasibility against the supplied balances, bounds, and allocation constraints within an absolute tolerance.
+src/Model.jl:D01: Locate a reaction's one-based column index from its identifier or report its absence.
+src/Model.jl:D02: Read the supplied model and return its arrays, reaction indices, bounds, and expression parameters under the stated operating conditions.
+src/Reporting.jl:D01: Identify the supplied reporting code's role in plotting and table generation.
+src/Reporting.jl:D02: Generate, save, and return the specified production curves and report a checked allocation at a budget of 1 mM/h.
+Include.jl:D01: Load the assignment module and explain when a fresh Julia session is needed after source edits.
+
+Flags
+No missing or confusing requirements, contradictions, or unclear language found for the stated student task when read after the provided README. The three TODOs can be approached using their docstrings and the README without additional implementation tutorials.
+
+TOTALS: severity-3 = 0; severity-2 = 0; severity-1 = 0

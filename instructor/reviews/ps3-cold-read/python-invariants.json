@@ -1,0 +1,22 @@
+[
+  {
+    "file": "instructor/crosscheck.py",
+    "functions_documented": 0,
+    "executable_syntax_unchanged": true
+  },
+  {
+    "file": "instructor/build_student_package.py",
+    "functions_documented": 2,
+    "executable_syntax_unchanged": true
+  },
+  {
+    "file": "instructor/validate.py",
+    "functions_documented": 2,
+    "executable_syntax_unchanged": true
+  },
+  {
+    "file": "instructor/import_model.py",
+    "functions_documented": 1,
+    "executable_syntax_unchanged": true
+  }
+]

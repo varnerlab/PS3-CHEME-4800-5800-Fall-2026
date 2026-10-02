@@ -1,0 +1,73 @@
+PS3 submission check: 24 tests per part, 48 total.
+
+Running testme_part_1.jl
+LoadError: ParseError:
+# Error @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/src/Compute.jl:1:21
+function unfinished(
+#                   └ ── Expected `)` or `,`
+Stacktrace:
+  [1] top-level scope
+    @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/src/Compute.jl:1
+  [2] include(mapexpr::Function, mod::Module, _path::String)
+    @ Base ./Base.jl:307
+  [3] top-level scope
+    @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/Include.jl:21
+  [4] include(mod::Module, _path::String)
+    @ Base ./Base.jl:306
+  [5] top-level scope
+    @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/testme_part_1.jl:4
+  [6] include(mod::Module, _path::String)
+    @ Base ./Base.jl:306
+  [7] top-level scope
+    @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/check_submission.jl:71
+  [8] include(mod::Module, _path::String)
+    @ Base ./Base.jl:306
+  [9] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:317
+ [10] _start()
+    @ Base ./client.jl:550
+in expression starting at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/src/Compute.jl:1
+in expression starting at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/Include.jl:2
+in expression starting at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/testme_part_1.jl:4
+
+Running testme_part_2.jl
+LoadError: ParseError:
+# Error @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/src/Compute.jl:1:21
+function unfinished(
+#                   └ ── Expected `)` or `,`
+Stacktrace:
+  [1] top-level scope
+    @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/src/Compute.jl:1
+  [2] include(mapexpr::Function, mod::Module, _path::String)
+    @ Base ./Base.jl:307
+  [3] top-level scope
+    @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/Include.jl:21
+  [4] include(mod::Module, _path::String)
+    @ Base ./Base.jl:306
+  [5] top-level scope
+    @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/testme_part_2.jl:4
+  [6] include(mod::Module, _path::String)
+    @ Base ./Base.jl:306
+  [7] top-level scope
+    @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/check_submission.jl:71
+  [8] include(mod::Module, _path::String)
+    @ Base ./Base.jl:306
+  [9] exec_options(opts::Base.JLOptions)
+    @ Base ./client.jl:317
+ [10] _start()
+    @ Base ./client.jl:550
+in expression starting at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/src/Compute.jl:1
+in expression starting at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/Include.jl:2
+in expression starting at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-8_iib30v/testme_part_2.jl:4
+
+Submission summary
+testme_part_1.jl: tests could not run
+testme_part_2.jl: tests could not run
+Outputs: not generated because tests need attention
+Discussion: Question 1 still has a placeholder
+Discussion: Question 2 still has a placeholder
+Discussion: Question 3 still has a placeholder
+Status: WORK NEEDS ATTENTION
+Wrote MANIFEST.txt. Zip the assignment folder, including responses and outputs.
+Name it CHEME-4800-5800-PS3-<your netid>.zip and upload it to Canvas yourself.
+Submit your current work by the initial deadline even if some tests still fail.

@@ -1,0 +1,238 @@
+{
+  "README.md": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "# Problem Set 3 (PS3): Feeding a cell-free protein factory"
+      },
+      {
+        "kind": "paragraph",
+        "text": "A cell-free protein synthesis system uses cellular machinery in a reaction\nmixture to make a protein. That machinery needs amino acids, nucleotides, and\nenergy. The metabolic reactions in the mixture can make amino acids from other\navailable compounds, and amino acids can also be supplied directly."
+      },
+      {
+        "kind": "paragraph",
+        "text": "You will use linear programming to predict the production rate of deGFP, a green\nfluorescent protein, under two amino-acid supply strategies. With **equal\nallocation**, every amino acid receives the same supply limit. With **optimized\nallocation**, the solver distributes a shared supply budget among the amino acids.\nYour final result is a plot of protein production against the total supply budget."
+      },
+      {
+        "kind": "paragraph",
+        "text": "This assignment extends the flux balance analysis in L6b. The supplied model is\nadapted from the model described by **Vilkhovoy et al. (2018), \u201cSequence Specific\nModeling of E. coli Cell-Free Protein Synthesis,\u201d ACS Synthetic Biology, 7(8),\n1844\u20131857** ([paper](https://pubmed.ncbi.nlm.nih.gov/29944340/),\n[DOI: 10.1021/acssynbio.7b00465](https://doi.org/10.1021/acssynbio.7b00465)).\nThe code and model data are available in the Varner laboratory's\n[sequence-specific cell-free protein synthesis repository](https://github.com/varnerlab/Sequence-Specific-FBA-CFPS-Publication-Code).\nThe [data notes](data/README.md) identify the source and the PS3 operating conditions."
+      },
+      {
+        "kind": "heading",
+        "text": "## Logistics"
+      },
+      {
+        "kind": "list",
+        "text": "- **Release:** Saturday, October 3, 2026. **Initial submission deadline:**\n  **11:59 PM ET on Saturday, October 17, 2026**.\n- **Submission:** Upload `CHEME-4800-5800-PS3-<your netid>.zip` to Canvas.\n  Replace the complete placeholder with your NetID.\n- **Infinite-revision policy:** Submit something by the initial deadline to\n  participate. Eligible students may then revise and resubmit until the end of\n  the semester; the highest score is retained. No initial submission means a\n  score of `0` and no access to later revisions.\n- **Reference solution:** Released after the initial deadline. You may consult\n  it to understand mistakes and debug your work, but may not copy it. Copying\n  the reference solution results in a score of `0`.\n- **Group and AI policy:** Submit independent work. You may discuss ideas with\n  classmates but may not share code or solutions directly. You may use Julia\n  documentation, AI tools, and internet resources. You are responsible for\n  understanding and explaining your implementation.\n- **Grading:** Maximum `4` points; see [RUBRIC.md](RUBRIC.md)."
+      },
+      {
+        "kind": "heading",
+        "text": "## Getting started"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Use Julia `1.12.7`. The assignment contains its own data and source files.\nOpen the extracted assignment folder in VS Code. Run these commands from the\nfolder containing this README and [Project.toml](Project.toml):"
+      },
+      {
+        "kind": "code",
+        "text": "```bash\njulia --startup-file=no --project=. -e 'using Pkg; Pkg.instantiate()'\njulia --startup-file=no --project=. check_submission.jl\n```"
+      },
+      {
+        "kind": "paragraph",
+        "text": "The first command installs the required packages and can take several minutes.\nThe second runs the assignment tests. The three functions in\n[src/Compute.jl](src/Compute.jl) initially raise errors because you must implement\nthem. Tests will fail until that work is complete."
+      },
+      {
+        "kind": "paragraph",
+        "text": "Complete those functions and the three prompts in [responses.md](responses.md).\nKeep any helper files in `src/` and load them from [Include.jl](Include.jl).\nThe model loader, LP solver, and plotting code are supplied. Keep the data,\nsupplied code, and test files unchanged."
+      },
+      {
+        "kind": "heading",
+        "text": "## The model and its operating conditions"
+      },
+      {
+        "kind": "paragraph",
+        "text": "The model contains 146 species and 265 reactions. It includes metabolism,\ntranscription, translation, amino-acid supply, and protein output. The supplied\n[load_model function](src/Model.jl) reads the stoichiometric matrix and sets the\noperating conditions. Its returned named tuple contains:"
+      },
+      {
+        "kind": "table",
+        "text": "| Field | Meaning |\n|---|---|\n| `S` | Stoichiometric matrix; rows are species and columns are reactions. |\n| `reactions`, `metabolites` | Identifiers in matrix column and row order. |\n| `lower`, `upper` | One lower and upper flux bound per reaction, in mM/h. |\n| `amino_acids` | Names of the 20 supplied amino acids. |\n| `amino_acid_uptake` | Column indices of their supply reactions. |\n| `protein` | Column index of the deGFP output reaction. |\n| `translation` | Column index of translation initiation. |\n| `translation_limit` | Fixed translation-capacity bound, in mM/h. |"
+      },
+      {
+        "kind": "paragraph",
+        "text": "The glucose supply limit is **1 mM/h** and the oxygen supply limit is\n**100 mM/h**. Amino-acid synthesis is enabled; the model's designated\namino-acid degradation reactions and amino-acid removal reactions are blocked.\nTranscription and translation bounds are calculated from fixed expression\nparameters before solving. Use the supplied conditions for both strategies."
+      },
+      {
+        "kind": "paragraph",
+        "text": "Supply reactions are written as `[] --> species` and have **nonnegative**\nfluxes. Each amino-acid supply flux therefore contributes positively to the\nbudget. The deGFP output reaction removes protein from the balanced network and\nrecords its production rate. Metabolic intermediates satisfy steady-state\nbalances while protein leaves through that output reaction."
+      },
+      {
+        "kind": "paragraph",
+        "text": "All model fluxes are in **mM/h**, millimoles per liter per hour. Report protein\nproduction in **\u00b5M/h** by multiplying its model flux by 1000. The supply budget\nis a rate limit; it does not specify an initial concentration or a monetary cost.\nThis static model predicts feasible production rates under fixed conditions."
+      },
+      {
+        "kind": "heading",
+        "text": "## Part 1: Construct the objective and supply constraints"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Let the vector $\\mathbf{v}$ contain the reaction fluxes, and let $p$ be the\nprotein-output column. The production problem is given by:"
+      },
+      {
+        "kind": "math",
+        "text": "$$\n\\begin{aligned}\n\\underset{\\mathbf{v}}{\\operatorname{maximize}}\\quad & v_p\\\\\n\\text{subject to}\\quad & \\mathbf{S}\\mathbf{v}=\\mathbf{0},\\\\\n& \\boldsymbol{\\ell}\\leq\\mathbf{v}\\leq\\mathbf{u},\\\\\n& \\mathbf{A}\\mathbf{v}\\leq\\mathbf{b}.\n\\end{aligned}\n$$"
+      },
+      {
+        "kind": "paragraph",
+        "text": "The vectors $\\boldsymbol{\\ell}$ and $\\mathbf{u}$ specify the flux bounds.\nThe matrix $\\mathbf{A}$ and vector $\\mathbf{b}$ hold any additional supply\ninequality. Define $\\mathcal{I}$ as the set of amino-acid supply columns, let\n$K=|\\mathcal{I}|$, and let $U\\geq0$ be the total supply budget in mM/h."
+      },
+      {
+        "kind": "paragraph",
+        "text": "**Equal allocation.** Each amino acid may use at most one equal share of the\nbudget. Its upper bound is given by:"
+      },
+      {
+        "kind": "math",
+        "text": "$$\nu_j^{\\mathrm{equal}}=\\min(u_j,U/K),\\qquad j\\in\\mathcal{I}.\n$$"
+      },
+      {
+        "kind": "paragraph",
+        "text": "The supply fluxes can be smaller than their limits. Any unused share remains\nunavailable to the other amino acids. These individual limits already enforce\nthe total budget, so return an `A` with zero rows and an empty `b`."
+      },
+      {
+        "kind": "paragraph",
+        "text": "**Optimized allocation.** Retain the original individual bounds and add one\nshared supply constraint, given by:"
+      },
+      {
+        "kind": "math",
+        "text": "$$\n\\sum_{j\\in\\mathcal{I}}v_j\\leq U.\n$$"
+      },
+      {
+        "kind": "paragraph",
+        "text": "The solver may distribute the available supply unequally. One row of `A` has\na coefficient of one at each amino-acid supply column and zero elsewhere;\nthe corresponding entry of `b` is `U`. Metabolic synthesis of amino acids remains\navailable under both strategies and does not count as external supply."
+      },
+      {
+        "kind": "paragraph",
+        "text": "Implement two functions in [src/Compute.jl](src/Compute.jl):"
+      },
+      {
+        "kind": "list",
+        "text": "1. **protein_objective(model)** returns a `Vector{Float64}` with one coefficient\n   per reaction. Its protein-output coefficient is one; the others are zero.\n2. **allocation_constraints(model, budget; strategy=:equal)** returns\n   `(lower, upper, A, b)` using the rules above. Support `:equal` and `:optimized`.\n   Copy the bound arrays so that solving one scenario cannot change the next.\n   Reject a negative or nonfinite budget or an unknown strategy with `ArgumentError`."
+      },
+      {
+        "kind": "paragraph",
+        "text": "Use the model's supplied column indices. Your functions must also work on the\nsmall test networks, which have different numbers and orders of reactions and\namino-acid supplies. All test models have nonnegative supply fluxes and at least\none supply column. Keep all lower bounds and unrelated upper bounds unchanged."
+      },
+      {
+        "kind": "paragraph",
+        "text": "Run the Part 1 checks with:"
+      },
+      {
+        "kind": "code",
+        "text": "```bash\njulia --startup-file=no --project=. testme_part_1.jl\n```"
+      },
+      {
+        "kind": "paragraph",
+        "text": "For a hand check, consider two amino acids with supply fluxes $v_1$ and $v_2$.\nOne unit of protein output $v_p$ consumes two units of the first amino acid and\none unit of the second. The balances are $v_1=2v_p$ and $v_2=v_p$.\nWith a total supply budget of 6 and all other bounds loose, equal allocation\nallows at most **1.5** units of protein output; optimized allocation allows\n**2**. Explain these numbers to yourself before testing the larger network."
+      },
+      {
+        "kind": "heading",
+        "text": "## Part 2: Compute and interpret the production curves"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Implement **production_curve(model, budgets)** in\n[src/Compute.jl](src/Compute.jl). For each budget, construct both sets of\nconstraints and solve both LPs. Use your Part 1 functions and the supplied\n[solve_lp function](src/Solver.jl). A single solve has this form:"
+      },
+      {
+        "kind": "code",
+        "text": "```julia\nlimits = allocation_constraints(model, budget; strategy=:equal);\nc = protein_objective(model);\nresult = solve_lp(model.S, limits.lower, limits.upper, c;\n    A=limits.A, b=limits.b);\n```"
+      },
+      {
+        "kind": "paragraph",
+        "text": "The result contains `status`, `optimal`, `flux`, and `objective`. Check\n`result.optimal` before reading the fluxes. If a solve is not optimal, throw an\n`ErrorException` naming the budget, strategy, and status. In that case the solver\nreturns `nothing` for `flux` and `objective`."
+      },
+      {
+        "kind": "paragraph",
+        "text": "Return a vector containing one named tuple `(budget, equal, optimized)` per\ninput budget. The budget remains in mM/h; both production rates must be in \u00b5M/h.\nPreserve the input order, including repeated budgets. An empty input returns an\nempty vector. Negative or nonfinite budgets raise `ArgumentError`."
+      },
+      {
+        "kind": "paragraph",
+        "text": "After completing the function, run:"
+      },
+      {
+        "kind": "code",
+        "text": "```bash\njulia --startup-file=no --project=. testme_part_2.jl\njulia --startup-file=no --project=. runproduction.jl\n```"
+      },
+      {
+        "kind": "paragraph",
+        "text": "The supplied driver evaluates budgets from **0 to 4 mM/h in steps of 0.1** and\nwrites these files:"
+      },
+      {
+        "kind": "list",
+        "text": "- `outputs/production-versus-budget.png` and `.svg`: the two production curves\n  and the fixed translation-capacity limit.\n- `outputs/production-versus-budget.csv`: the numerical values used in the plot.\n- `outputs/amino-acid-allocation.csv`: actual supply fluxes for both strategies\n  at a total budget of **1 mM/h**, with independent feasibility checks reported\n  in the terminal."
+      },
+      {
+        "kind": "paragraph",
+        "text": "Open the plot and use it with the tables to answer [responses.md](responses.md).\nThe optimized allocation can have multiple equally productive flux distributions.\nTests check feasibility and production, so they accept alternative optimal allocations."
+      },
+      {
+        "kind": "heading",
+        "text": "## Checking and submitting your work"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Run the complete check after finishing the code and responses:"
+      },
+      {
+        "kind": "code",
+        "text": "```bash\njulia --startup-file=no --project=. check_submission.jl\n```"
+      },
+      {
+        "kind": "paragraph",
+        "text": "The checker runs **24 tests per part, 48 total**, records their results and source\nfile fingerprints in `MANIFEST.txt`, and warns about unanswered discussion prompts.\nIf both test suites pass, it generates the plot and data tables from your code.\nThe instructor still reviews the implementation and written explanations."
+      },
+      {
+        "kind": "paragraph",
+        "text": "Zip the entire assignment folder, including your source, data, responses,\n`MANIFEST.txt`, and generated files in `outputs/`. Name the archive\n`CHEME-4800-5800-PS3-<your netid>.zip` and upload it to Canvas. The checker runs\nlocally; you must upload the ZIP yourself."
+      },
+      {
+        "kind": "paragraph",
+        "text": "If some tests still fail at the deadline, submit your current work to receive\npartial credit and participate in the infinite-revision policy."
+      }
+    ],
+    "paragraph_count": 30,
+    "prose_words": 1434
+  },
+  "RUBRIC.md": {
+    "blocks": [
+      {
+        "kind": "heading",
+        "text": "# PS3 grading rubric"
+      },
+      {
+        "kind": "paragraph",
+        "text": "PS3 is worth a maximum of **4 points**. There are **48 scored tests**, 24 in\neach of [testme_part_1.jl](testme_part_1.jl) and\n[testme_part_2.jl](testme_part_2.jl). A test that cannot run counts as failed."
+      },
+      {
+        "kind": "table",
+        "text": "| Score | Requirements |\n|:---:|---|\n| 0 | No tests pass, including submissions where neither suite can run. |\n| 1 | 1\u201323 tests pass. |\n| 2 | 24\u201347 tests pass. |\n| 3 | All 48 tests pass, but one or more requirements below are not met. |\n| 4 | All 48 tests pass and all requirements below are met. |"
+      },
+      {
+        "kind": "paragraph",
+        "text": "After all tests pass, the instructor checks that:"
+      },
+      {
+        "kind": "list",
+        "text": "- The three functions implement the specified LP construction and repeated solves,\n  use model indices, preserve inputs, and handle invalid arguments and solver status.\n  Values are computed from the supplied model rather than hard-coded for test cases.\n- The implementation and any helpers have accurate docstrings and comments that\n  explain nonobvious choices. The supplied docstrings may be retained.\n- All required implementation is complete, with no unfinished TODOs or placeholder errors.\n- The production plot and data tables are generated by the submitted implementation\n  and included in `outputs/`. Units and plotted quantities match the assignment.\n- All three written answers address the prompts with correct reasoning and the\n  requested numerical evidence. The instructor grades the writing; the checker\n  only detects missing answers and placeholders."
+      },
+      {
+        "kind": "paragraph",
+        "text": "The instructor tests the submitted `src/Compute.jl`, any student helper files,\nand `Include.jl` in a clean assignment copy. The original model data, supplied\nutilities, driver, and tests are used for grading. Alternative optimal flux\nvectors are accepted when they satisfy the constraints and give the correct\nproduction rate. Passing all tests leaves the final score pending instructor review."
+      },
+      {
+        "kind": "paragraph",
+        "text": "The initial-submission, revision, independent-work, and reference-solution policies\nin [README.md](README.md) apply."
+      }
+    ],
+    "paragraph_count": 4,
+    "prose_words": 276
+  }
+}

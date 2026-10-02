@@ -1,0 +1,12 @@
+Include.jl: executable syntax unchanged; 0 named functions documented
+check_submission.jl: executable syntax unchanged; 2 named functions documented
+runproduction.jl: executable syntax unchanged; 0 named functions documented
+test_support.jl: executable syntax unchanged; 4 named functions documented
+testme_part_1.jl: executable syntax unchanged; 0 named functions documented
+testme_part_2.jl: executable syntax unchanged; 0 named functions documented
+solution/src/Compute.jl: executable syntax unchanged; 3 named functions documented
+src/Compute.jl: executable syntax unchanged; 3 named functions documented
+src/Model.jl: executable syntax unchanged; 2 named functions documented
+src/Reporting.jl: executable syntax unchanged; 1 named functions documented
+src/Solver.jl: executable syntax unchanged; 2 named functions documented
+TOTAL: 17 Julia named functions documented; executable syntax unchanged.

@@ -1,0 +1,79 @@
+{
+  "README.md": {
+    "same_block_and_math_element_counts": true,
+    "inline_changes": {
+      "code": [
+        51,
+        57
+      ]
+    },
+    "final_counts": {
+      "html": 1,
+      "head": 1,
+      "meta": 3,
+      "title": 1,
+      "style": 1,
+      "body": 1,
+      "header": 1,
+      "h1": 2,
+      "p": 33,
+      "strong": 26,
+      "a": 24,
+      "h2": 6,
+      "ul": 2,
+      "li": 11,
+      "code": 57,
+      "div": 5,
+      "pre": 5,
+      "span": 51,
+      "table": 1,
+      "thead": 1,
+      "tr": 9,
+      "th": 2,
+      "tbody": 1,
+      "td": 16,
+      "math": 17,
+      "semantics": 17,
+      "mi": 55,
+      "annotation": 17,
+      "mtable": 1,
+      "mtr": 4,
+      "mtd": 8,
+      "munder": 2,
+      "mspace": 3,
+      "msub": 10,
+      "mtext": 1,
+      "mo": 22,
+      "mn": 7,
+      "mrow": 9,
+      "msubsup": 1,
+      "ol": 1
+    }
+  },
+  "RUBRIC.md": {
+    "same_block_and_math_element_counts": true,
+    "inline_changes": {},
+    "final_counts": {
+      "html": 1,
+      "head": 1,
+      "meta": 3,
+      "title": 1,
+      "style": 1,
+      "body": 1,
+      "header": 1,
+      "h1": 2,
+      "p": 4,
+      "strong": 2,
+      "a": 3,
+      "table": 1,
+      "thead": 1,
+      "tr": 6,
+      "th": 2,
+      "tbody": 1,
+      "td": 10,
+      "ul": 1,
+      "li": 5,
+      "code": 3
+    }
+  }
+}

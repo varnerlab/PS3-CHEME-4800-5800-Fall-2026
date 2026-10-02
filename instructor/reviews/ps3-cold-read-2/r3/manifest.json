@@ -1,0 +1,492 @@
+{
+ "readme_1_intro": {
+  "audit_range": "README.md:B001 to README.md:B017",
+  "blocks": [
+   {
+    "id": "README.md:B001",
+    "file": "README.md",
+    "line": 1
+   },
+   {
+    "id": "README.md:B002",
+    "file": "README.md",
+    "line": 3
+   },
+   {
+    "id": "README.md:B003",
+    "file": "README.md",
+    "line": 8
+   },
+   {
+    "id": "README.md:B004",
+    "file": "README.md",
+    "line": 19
+   },
+   {
+    "id": "README.md:B005",
+    "file": "README.md",
+    "line": 28
+   },
+   {
+    "id": "README.md:B006",
+    "file": "README.md",
+    "line": 30
+   },
+   {
+    "id": "README.md:B007",
+    "file": "README.md",
+    "line": 49
+   },
+   {
+    "id": "README.md:B008",
+    "file": "README.md",
+    "line": 51
+   },
+   {
+    "id": "README.md:B009",
+    "file": "README.md",
+    "line": 55
+   },
+   {
+    "id": "README.md:B010",
+    "file": "README.md",
+    "line": 60
+   },
+   {
+    "id": "README.md:B011",
+    "file": "README.md",
+    "line": 65
+   },
+   {
+    "id": "README.md:B012",
+    "file": "README.md",
+    "line": 69
+   },
+   {
+    "id": "README.md:B013",
+    "file": "README.md",
+    "line": 71
+   },
+   {
+    "id": "README.md:B014",
+    "file": "README.md",
+    "line": 76
+   },
+   {
+    "id": "README.md:B015",
+    "file": "README.md",
+    "line": 87
+   },
+   {
+    "id": "README.md:B016",
+    "file": "README.md",
+    "line": 96
+   },
+   {
+    "id": "README.md:B017",
+    "file": "README.md",
+    "line": 102
+   }
+  ]
+ },
+ "readme_2_parts12": {
+  "audit_range": "README.md:B018 to README.md:B044",
+  "blocks": [
+   {
+    "id": "README.md:B018",
+    "file": "README.md",
+    "line": 107
+   },
+   {
+    "id": "README.md:B019",
+    "file": "README.md",
+    "line": 109
+   },
+   {
+    "id": "README.md:B020",
+    "file": "README.md",
+    "line": 112
+   },
+   {
+    "id": "README.md:B021",
+    "file": "README.md",
+    "line": 121
+   },
+   {
+    "id": "README.md:B022",
+    "file": "README.md",
+    "line": 127
+   },
+   {
+    "id": "README.md:B023",
+    "file": "README.md",
+    "line": 131
+   },
+   {
+    "id": "README.md:B024",
+    "file": "README.md",
+    "line": 135
+   },
+   {
+    "id": "README.md:B025",
+    "file": "README.md",
+    "line": 140
+   },
+   {
+    "id": "README.md:B026",
+    "file": "README.md",
+    "line": 143
+   },
+   {
+    "id": "README.md:B027",
+    "file": "README.md",
+    "line": 147
+   },
+   {
+    "id": "README.md:B028",
+    "file": "README.md",
+    "line": 152
+   },
+   {
+    "id": "README.md:B029",
+    "file": "README.md",
+    "line": 154
+   },
+   {
+    "id": "README.md:B030",
+    "file": "README.md",
+    "line": 162
+   },
+   {
+    "id": "README.md:B031",
+    "file": "README.md",
+    "line": 168
+   },
+   {
+    "id": "README.md:B032",
+    "file": "README.md",
+    "line": 170
+   },
+   {
+    "id": "README.md:B033",
+    "file": "README.md",
+    "line": 174
+   },
+   {
+    "id": "README.md:B034",
+    "file": "README.md",
+    "line": 181
+   },
+   {
+    "id": "README.md:B035",
+    "file": "README.md",
+    "line": 183
+   },
+   {
+    "id": "README.md:B036",
+    "file": "README.md",
+    "line": 190
+   },
+   {
+    "id": "README.md:B037",
+    "file": "README.md",
+    "line": 197
+   },
+   {
+    "id": "README.md:B038",
+    "file": "README.md",
+    "line": 202
+   },
+   {
+    "id": "README.md:B039",
+    "file": "README.md",
+    "line": 207
+   },
+   {
+    "id": "README.md:B040",
+    "file": "README.md",
+    "line": 209
+   },
+   {
+    "id": "README.md:B041",
+    "file": "README.md",
+    "line": 214
+   },
+   {
+    "id": "README.md:B042",
+    "file": "README.md",
+    "line": 217
+   },
+   {
+    "id": "README.md:B043",
+    "file": "README.md",
+    "line": 226
+   },
+   {
+    "id": "README.md:B044",
+    "file": "README.md",
+    "line": 230
+   }
+  ]
+ },
+ "readme_3_part3a": {
+  "audit_range": "README.md:B045 to README.md:B051",
+  "blocks": [
+   {
+    "id": "README.md:B045",
+    "file": "README.md",
+    "line": 235
+   },
+   {
+    "id": "README.md:B046",
+    "file": "README.md",
+    "line": 237
+   },
+   {
+    "id": "README.md:B047",
+    "file": "README.md",
+    "line": 251
+   },
+   {
+    "id": "README.md:B048",
+    "file": "README.md",
+    "line": 256
+   },
+   {
+    "id": "README.md:B049",
+    "file": "README.md",
+    "line": 261
+   },
+   {
+    "id": "README.md:B050",
+    "file": "README.md",
+    "line": 270
+   },
+   {
+    "id": "README.md:B051",
+    "file": "README.md",
+    "line": 273
+   }
+  ]
+ },
+ "readme_4_part3b_submit": {
+  "audit_range": "README.md:B052 to README.md:B069",
+  "blocks": [
+   {
+    "id": "README.md:B052",
+    "file": "README.md",
+    "line": 278
+   },
+   {
+    "id": "README.md:B053",
+    "file": "README.md",
+    "line": 283
+   },
+   {
+    "id": "README.md:B054",
+    "file": "README.md",
+    "line": 286
+   },
+   {
+    "id": "README.md:B055",
+    "file": "README.md",
+    "line": 288
+   },
+   {
+    "id": "README.md:B056",
+    "file": "README.md",
+    "line": 303
+   },
+   {
+    "id": "README.md:B057",
+    "file": "README.md",
+    "line": 308
+   },
+   {
+    "id": "README.md:B058",
+    "file": "README.md",
+    "line": 313
+   },
+   {
+    "id": "README.md:B059",
+    "file": "README.md",
+    "line": 321
+   },
+   {
+    "id": "README.md:B060",
+    "file": "README.md",
+    "line": 323
+   },
+   {
+    "id": "README.md:B061",
+    "file": "README.md",
+    "line": 328
+   },
+   {
+    "id": "README.md:B062",
+    "file": "README.md",
+    "line": 330
+   },
+   {
+    "id": "README.md:B063",
+    "file": "README.md",
+    "line": 343
+   },
+   {
+    "id": "README.md:B064",
+    "file": "README.md",
+    "line": 347
+   },
+   {
+    "id": "README.md:B065",
+    "file": "README.md",
+    "line": 349
+   },
+   {
+    "id": "README.md:B066",
+    "file": "README.md",
+    "line": 351
+   },
+   {
+    "id": "README.md:B067",
+    "file": "README.md",
+    "line": 355
+   },
+   {
+    "id": "README.md:B068",
+    "file": "README.md",
+    "line": 362
+   },
+   {
+    "id": "README.md:B069",
+    "file": "README.md",
+    "line": 367
+   }
+  ]
+ },
+ "responses": {
+  "audit_range": "responses.md:B001 to responses.md:B012",
+  "blocks": [
+   {
+    "id": "responses.md:B001",
+    "file": "responses.md",
+    "line": 1
+   },
+   {
+    "id": "responses.md:B002",
+    "file": "responses.md",
+    "line": 3
+   },
+   {
+    "id": "responses.md:B003",
+    "file": "responses.md",
+    "line": 7
+   },
+   {
+    "id": "responses.md:B004",
+    "file": "responses.md",
+    "line": 20
+   },
+   {
+    "id": "responses.md:B005",
+    "file": "responses.md",
+    "line": 22
+   },
+   {
+    "id": "responses.md:B006",
+    "file": "responses.md",
+    "line": 34
+   },
+   {
+    "id": "responses.md:B007",
+    "file": "responses.md",
+    "line": 36
+   },
+   {
+    "id": "responses.md:B008",
+    "file": "responses.md",
+    "line": 48
+   },
+   {
+    "id": "responses.md:B009",
+    "file": "responses.md",
+    "line": 50
+   },
+   {
+    "id": "responses.md:B010",
+    "file": "responses.md",
+    "line": 63
+   },
+   {
+    "id": "responses.md:B011",
+    "file": "responses.md",
+    "line": 65
+   },
+   {
+    "id": "responses.md:B012",
+    "file": "responses.md",
+    "line": 76
+   }
+  ]
+ },
+ "rubric": {
+  "audit_range": "RUBRIC.md:B001 to RUBRIC.md:B008",
+  "blocks": [
+   {
+    "id": "RUBRIC.md:B001",
+    "file": "RUBRIC.md",
+    "line": 1
+   },
+   {
+    "id": "RUBRIC.md:B002",
+    "file": "RUBRIC.md",
+    "line": 3
+   },
+   {
+    "id": "RUBRIC.md:B003",
+    "file": "RUBRIC.md",
+    "line": 10
+   },
+   {
+    "id": "RUBRIC.md:B004",
+    "file": "RUBRIC.md",
+    "line": 18
+   },
+   {
+    "id": "RUBRIC.md:B005",
+    "file": "RUBRIC.md",
+    "line": 20
+   },
+   {
+    "id": "RUBRIC.md:B006",
+    "file": "RUBRIC.md",
+    "line": 38
+   },
+   {
+    "id": "RUBRIC.md:B007",
+    "file": "RUBRIC.md",
+    "line": 45
+   },
+   {
+    "id": "RUBRIC.md:B008",
+    "file": "RUBRIC.md",
+    "line": 47
+   }
+  ]
+ },
+ "contracts": {
+  "audit_range": "src/Compute.jl:D04 to src/Compute.jl:TODO4",
+  "blocks": [
+   {
+    "id": "src/Compute.jl:D04",
+    "file": "src/Compute.jl",
+    "line": 97
+   },
+   {
+    "id": "src/Compute.jl:TODO4",
+    "file": "src/Compute.jl",
+    "line": 133
+   }
+  ]
+ }
+}

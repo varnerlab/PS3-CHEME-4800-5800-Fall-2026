@@ -1,0 +1,152 @@
+[
+  {
+    "id": "B002",
+    "first_sentence": "A cell-free protein synthesis system uses cellular machinery in a reaction mixture to make a protein.",
+    "last_sentence": "The metabolic reactions in the mixture can make amino acids from other available compounds, and amino acids can also be supplied directly."
+  },
+  {
+    "id": "B003",
+    "first_sentence": "You will use linear programming to predict the production rate of deGFP, a green fluorescent protein, under two amino-acid supply strategies.",
+    "last_sentence": "Your final result is a plot of protein production against the total supply budget."
+  },
+  {
+    "id": "B004",
+    "first_sentence": "This assignment extends the flux balance analysis in L6b.",
+    "last_sentence": "The [data notes](data/README.md) identify the source and the PS3 operating conditions."
+  },
+  {
+    "id": "B008",
+    "first_sentence": "Use Julia `1.12.7`.",
+    "last_sentence": "Run these commands from the folder containing this README and [Project.toml](Project.toml):"
+  },
+  {
+    "id": "B010",
+    "first_sentence": "The first command installs the required packages and can take several minutes.",
+    "last_sentence": "Tests will fail until that work is complete."
+  },
+  {
+    "id": "B011",
+    "first_sentence": "Complete those functions and the three prompts in [responses.md](responses.md).",
+    "last_sentence": "Keep the data, supplied code, and test files unchanged."
+  },
+  {
+    "id": "B013",
+    "first_sentence": "The model contains 146 species and 265 reactions.",
+    "last_sentence": "Its returned named tuple contains:"
+  },
+  {
+    "id": "B015",
+    "first_sentence": "The glucose supply limit is **1 mM/h** and the oxygen supply limit is **100 mM/h**.",
+    "last_sentence": "Use the supplied conditions for both strategies."
+  },
+  {
+    "id": "B016",
+    "first_sentence": "Supply reactions are written as `[] --> species` and have **nonnegative** fluxes.",
+    "last_sentence": "Metabolic intermediates satisfy steady-state balances while protein leaves through that output reaction."
+  },
+  {
+    "id": "B017",
+    "first_sentence": "All model fluxes are in **mM/h**, millimoles per liter per hour.",
+    "last_sentence": "This static model predicts feasible production rates under fixed conditions."
+  },
+  {
+    "id": "B019",
+    "first_sentence": "Let the vector $\\mathbf{v}$ contain the reaction fluxes, and let $p$ be the protein-output column.",
+    "last_sentence": "The production problem is given by:"
+  },
+  {
+    "id": "B021",
+    "first_sentence": "The vectors $\\boldsymbol{\\ell}$ and $\\mathbf{u}$ specify the flux bounds.",
+    "last_sentence": "Define $\\mathcal{I}$ as the set of amino-acid supply columns, let $K=|\\mathcal{I}|$, and let $U\\geq0$ be the total supply budget in mM/h."
+  },
+  {
+    "id": "B022",
+    "first_sentence": "**Equal allocation.** Each amino acid may use at most one equal share of the budget.",
+    "last_sentence": "Its upper bound is given by:"
+  },
+  {
+    "id": "B024",
+    "first_sentence": "The supply fluxes can be smaller than their limits.",
+    "last_sentence": "These individual limits already enforce the total budget, so return an `A` with zero rows and an empty `b`."
+  },
+  {
+    "id": "B025",
+    "first_sentence": "**Optimized allocation.** Retain the original individual bounds and add one shared supply constraint, given by:",
+    "last_sentence": "**Optimized allocation.** Retain the original individual bounds and add one shared supply constraint, given by:"
+  },
+  {
+    "id": "B027",
+    "first_sentence": "The solver may distribute the available supply unequally.",
+    "last_sentence": "Metabolic synthesis of amino acids remains available under both strategies and does not count as external supply."
+  },
+  {
+    "id": "B028",
+    "first_sentence": "Implement two functions in [src/Compute.jl](src/Compute.jl):",
+    "last_sentence": "Implement two functions in [src/Compute.jl](src/Compute.jl):"
+  },
+  {
+    "id": "B030",
+    "first_sentence": "Use the model's supplied column indices.",
+    "last_sentence": "Keep all lower bounds and unrelated upper bounds unchanged."
+  },
+  {
+    "id": "B031",
+    "first_sentence": "Run the Part 1 checks with:",
+    "last_sentence": "Run the Part 1 checks with:"
+  },
+  {
+    "id": "B033",
+    "first_sentence": "For a hand check, consider two amino acids with supply fluxes $v_1$ and $v_2$.",
+    "last_sentence": "Explain these numbers to yourself before testing the larger network."
+  },
+  {
+    "id": "B035",
+    "first_sentence": "Implement **production_curve(model, budgets)** in [src/Compute.jl](src/Compute.jl).",
+    "last_sentence": "A single solve has this form:"
+  },
+  {
+    "id": "B037",
+    "first_sentence": "The result contains `status`, `optimal`, `flux`, and `objective`.",
+    "last_sentence": "In that case the solver returns `nothing` for `flux` and `objective`."
+  },
+  {
+    "id": "B038",
+    "first_sentence": "Return a vector containing one named tuple `(budget, equal, optimized)` per input budget.",
+    "last_sentence": "Negative or nonfinite budgets raise `ArgumentError`."
+  },
+  {
+    "id": "B039",
+    "first_sentence": "After completing the function, run:",
+    "last_sentence": "After completing the function, run:"
+  },
+  {
+    "id": "B041",
+    "first_sentence": "The supplied driver evaluates budgets from **0 to 4 mM/h in steps of 0.1** and writes these files:",
+    "last_sentence": "The supplied driver evaluates budgets from **0 to 4 mM/h in steps of 0.1** and writes these files:"
+  },
+  {
+    "id": "B043",
+    "first_sentence": "Open the plot and use it with the tables to answer [responses.md](responses.md).",
+    "last_sentence": "Tests check feasibility and production, so they accept alternative optimal allocations."
+  },
+  {
+    "id": "B045",
+    "first_sentence": "Run the complete check after finishing the code and responses:",
+    "last_sentence": "Run the complete check after finishing the code and responses:"
+  },
+  {
+    "id": "B047",
+    "first_sentence": "The checker runs **24 tests per part, 48 total**, records their results and source file fingerprints in `MANIFEST.txt`, and warns about unanswered discussion prompts.",
+    "last_sentence": "The instructor still reviews the implementation and written explanations."
+  },
+  {
+    "id": "B048",
+    "first_sentence": "Zip the entire assignment folder, including your source, data, responses, `MANIFEST.txt`, and generated files in `outputs/`.",
+    "last_sentence": "The checker runs locally; you must upload the ZIP yourself."
+  },
+  {
+    "id": "B049",
+    "first_sentence": "If some tests still fail at the deadline, submit your current work to receive partial credit and participate in the infinite-revision policy.",
+    "last_sentence": "If some tests still fail at the deadline, submit your current work to receive partial credit and participate in the infinite-revision policy."
+  }
+]

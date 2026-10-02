@@ -1,0 +1,21 @@
+PS3 submission check: 24 tests per part, 48 total.
+
+Running testme_part_1.jl
+Test Summary:         | Pass  Total  Time
+PS3 Part 1 (24 tests) |   24     24  2.3s
+
+Running testme_part_2.jl
+Test Summary:         | Pass  Total  Time
+PS3 Part 2 (24 tests) |   24     24  1.4s
+equal at U=1: 6.003523 μM/h; total amino-acid uptake 0.884049 mM/h; maximum balance residual 3.232e-15
+optimized at U=1: 7.443187 μM/h; total amino-acid uptake 1.000000 mM/h; maximum balance residual 5.259e-15
+Wrote plot and data tables to /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-f_7k8wnf/outputs
+
+Submission summary
+testme_part_1.jl: all tests passed
+testme_part_2.jl: all tests passed
+Outputs: plot and data tables generated
+Status: READY TO PACKAGE; instructor review pending
+Wrote MANIFEST.txt. Zip the assignment folder, including responses and outputs.
+Name it CHEME-4800-5800-PS3-<your netid>.zip and upload it to Canvas yourself.
+Submit your current work by the initial deadline even if some tests still fail.

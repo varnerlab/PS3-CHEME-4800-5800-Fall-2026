@@ -1,0 +1,1226 @@
+PS3 submission check: 24 tests per part, 48 total.
+
+Running testme_part_1.jl
+objective dimensions and type: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete protein_objective in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] protein_objective(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64})
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:22
+    [3] (::Main.var"##PS3Part#277".var"#29#30")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:12
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+objective selects only protein: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete protein_objective in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] protein_objective(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64})
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:22
+    [3] (::Main.var"##PS3Part#277".var"#31#32")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:15
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+objective follows a changed column order: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete protein_objective in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] protein_objective(model::@NamedTuple{S::Matrix{Float64}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acid_uptake::Vector{Int64}, protein::Int64})
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:22
+    [3] (::Main.var"##PS3Part#277".var"#33#34")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:17
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+objective preserves the input: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete protein_objective in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] protein_objective(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64})
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:22
+    [3] (::Main.var"##PS3Part#277".var"#35#36")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:19
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+equal bounds are independent copies: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:53
+    [4] (::Main.var"##PS3Part#277".var"#37#38")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:22
+    [5] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [6] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [7] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [8] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [9] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+   [10] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [11] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+equal supply limits: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:53
+    [4] (::Main.var"##PS3Part#277".var"#39#40")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:25
+    [5] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [6] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [7] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [8] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [9] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+   [10] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [11] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+equal preserves lower bounds: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:53
+    [4] (::Main.var"##PS3Part#277".var"#41#42")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:26
+    [5] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [6] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [7] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [8] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [9] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+   [10] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [11] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+equal preserves other upper bounds: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:53
+    [4] (::Main.var"##PS3Part#277".var"#43#44")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:29
+    [5] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [6] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [7] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [8] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [9] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+   [10] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [11] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+equal needs no extra inequality: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:53
+    [4] (::Main.var"##PS3Part#277".var"#45#46")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:32
+    [5] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [6] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [7] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [8] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [9] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+   [10] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [11] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+equal hand calculation on two supplies: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acid_uptake::Vector{Int64}, protein::Int64}, budget::Float64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acid_uptake::Vector{Int64}, protein::Int64}, budget::Float64)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:53
+    [4] (::Main.var"##PS3Part#277".var"#47#48")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:35
+    [5] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [6] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [7] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [8] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [9] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+   [10] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [11] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+zero equal budget blocks supply: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Int64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Int64)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:53
+    [4] (::Main.var"##PS3Part#277".var"#49#50")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:39
+    [5] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [6] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [7] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [8] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [9] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+   [10] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [11] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+equal retains tighter original bounds: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Int64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Int64)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:53
+    [4] (::Main.var"##PS3Part#277".var"#51#52")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:40
+    [5] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [6] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [7] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [8] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [9] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+   [10] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [11] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+optimized retains original bounds: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Int64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] (::Main.var"##PS3Part#277".var"#53#54")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:42
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+optimized inequality selects precisely the supply columns: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Int64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] (::Main.var"##PS3Part#277".var"#55#56")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:45
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+optimized right-hand side uses the supplied budget: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] (::Main.var"##PS3Part#277".var"#57#58")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:49
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+optimized hand calculation on two supplies: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acid_uptake::Vector{Int64}, protein::Int64}, budget::Float64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] (::Main.var"##PS3Part#277".var"#59#60")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:51
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+optimized bounds are independent copies: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Int64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] (::Main.var"##PS3Part#277".var"#61#62")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:56
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+strategies preserve the complete model: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:53
+    [4] (::Main.var"##PS3Part#277".var"#63#64")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:61
+    [5] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [6] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [7] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [8] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [9] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+   [10] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [11] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+negative budget rejected: Test Failed at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Expression: check()
+
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:680 [inlined]
+ [2] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+ [3] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [4] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+ [5] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [6] top-level scope
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+infinite budget rejected: Test Failed at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Expression: check()
+
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:680 [inlined]
+ [2] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+ [3] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [4] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+ [5] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [6] top-level scope
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+NaN budget rejected: Test Failed at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Expression: check()
+
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:680 [inlined]
+ [2] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+ [3] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [4] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+ [5] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [6] top-level scope
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+unknown strategy rejected: Test Failed at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Expression: check()
+
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:680 [inlined]
+ [2] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+ [3] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [4] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+ [5] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [6] top-level scope
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+repeated equal scenarios start from original bounds: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Int64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Int64)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:53
+    [4] (::Main.var"##PS3Part#277".var"#81#82")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:68
+    [5] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [6] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [7] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [8] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [9] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+   [10] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [11] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+optimized zero budget is a zero shared allowance: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acid_uptake::Vector{Int64}, protein::Int64}, budget::Int64; strategy::Symbol)
+      @ Main.var"##PS3Part#277".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] (::Main.var"##PS3Part#277".var"#83#84")()
+      @ Main.var"##PS3Part#277" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:72
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:80 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_1.jl:78
+Test Summary:                                               | Fail  Error  Total  Time
+PS3 Part 1 (24 tests)                                       |    4     20     24  1.6s
+  objective dimensions and type                             |           1      1  0.7s
+  objective selects only protein                            |           1      1  0.0s
+  objective follows a changed column order                  |           1      1  0.1s
+  objective preserves the input                             |           1      1  0.1s
+  equal bounds are independent copies                       |           1      1  0.0s
+  equal supply limits                                       |           1      1  0.0s
+  equal preserves lower bounds                              |           1      1  0.0s
+  equal preserves other upper bounds                        |           1      1  0.1s
+  equal needs no extra inequality                           |           1      1  0.0s
+  equal hand calculation on two supplies                    |           1      1  0.0s
+  zero equal budget blocks supply                           |           1      1  0.0s
+  equal retains tighter original bounds                     |           1      1  0.0s
+  optimized retains original bounds                         |           1      1  0.0s
+  optimized inequality selects precisely the supply columns |           1      1  0.0s
+  optimized right-hand side uses the supplied budget        |           1      1  0.0s
+  optimized hand calculation on two supplies                |           1      1  0.0s
+  optimized bounds are independent copies                   |           1      1  0.0s
+  strategies preserve the complete model                    |           1      1  0.0s
+  negative budget rejected                                  |    1             1  0.5s
+  infinite budget rejected                                  |    1             1  0.0s
+  NaN budget rejected                                       |    1             1  0.0s
+  unknown strategy rejected                                 |    1             1  0.0s
+  repeated equal scenarios start from original bounds       |           1      1  0.0s
+  optimized zero budget is a zero shared allowance          |           1      1  0.0s
+RNG of the outermost testset: Random.Xoshiro(0xa6d83eee95235add, 0xeb2831b58bb308fa, 0xd9fe1720bafd8f9e, 0xed4161c160923cc6, 0x2710f3fc832fed4b)
+
+Running testme_part_2.jl
+toy production rates and unit conversion: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acid_uptake::Vector{Int64}, protein::Int64}, budgets::Vector{Float64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#36#37")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:10
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+input budget order retained: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acid_uptake::Vector{Int64}, protein::Int64}, budgets::Vector{Float64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#38#39")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:12
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+duplicate budgets retained: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acid_uptake::Vector{Int64}, protein::Int64}, budgets::Vector{Float64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#42#43")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:16
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+empty budget vector: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budgets::Vector{Float64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#44#45")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:19
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+model and budget vector preserved: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budgets::Vector{Float64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#46#47")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:23
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+deGFP production without external amino acids: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budgets::Vector{Int64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#48#49")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:25
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+equal production at 0.5: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budgets::Vector{Float64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#50#51")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:26
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+optimized production at 0.5: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budgets::Vector{Float64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#52#53")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:27
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+equal production at 1.0: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budgets::Vector{Int64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#54#55")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:28
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+optimized production at 1.0: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budgets::Vector{Int64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#56#57")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:29
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+equal production at 2.0: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budgets::Vector{Int64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#58#59")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:30
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+optimized production at 2.0: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budgets::Vector{Int64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#60#61")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:31
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+both strategies reach the expression limit: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budgets::Vector{Int64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#62#63")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:32
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+production is nondecreasing: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budgets::Vector{Float64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#64#65")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:34
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+optimized production is at least equal production: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budgets::Vector{Float64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#70#71")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:37
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+tighter protein bound is respected: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acid_uptake::Vector{Int64}, protein::Int64}, budgets::Vector{Int64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#74#75")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:38
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+curve follows a changed protein column: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acid_uptake::Vector{Int64}, protein::Int64}, budgets::Vector{Int64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#76#77")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:39
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+different glucose condition changes production: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete production_curve in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] production_curve(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budgets::Vector{Int64})
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:94
+    [3] (::Main.var"##PS3Part#296".var"#78#79")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:40
+    [4] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [5] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+    [6] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [7] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+    [8] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+    [9] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [10] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+negative budget rejected: Test Failed at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Expression: check()
+
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:680 [inlined]
+ [2] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+ [3] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [4] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+ [5] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [6] top-level scope
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+infinite budget rejected: Test Failed at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Expression: check()
+
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:680 [inlined]
+ [2] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+ [3] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [4] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+ [5] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [6] top-level scope
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+NaN budget rejected: Test Failed at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Expression: check()
+
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:680 [inlined]
+ [2] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+ [3] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [4] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+ [5] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [6] top-level scope
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+nonoptimal status is handled before reading fluxes: Test Failed at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Expression: check()
+
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:680 [inlined]
+ [2] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+ [3] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [4] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+ [5] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [6] top-level scope
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+invalid later budget rejected: Test Failed at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Expression: check()
+
+Stacktrace:
+ [1] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:680 [inlined]
+ [2] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+ [3] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [4] macro expansion
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+ [5] macro expansion
+   @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+ [6] top-level scope
+   @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+real allocations satisfy balances, bounds, and budgets: Error During Test at /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56
+  Test threw exception
+  Expression: check()
+  Complete allocation_constraints in src/Compute.jl
+  Stacktrace:
+    [1] error(s::String)
+      @ Base ./error.jl:44
+    [2] allocation_constraints(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64; strategy::Symbol)
+      @ Main.var"##PS3Part#296".CellFreeProduction /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/src/Compute.jl:59
+    [3] valid_real_solution(model::@NamedTuple{S::Matrix{Float64}, reactions::Vector{String}, metabolites::Vector{String}, lower::Vector{Float64}, upper::Vector{Float64}, amino_acids::Vector{String}, amino_acid_uptake::Vector{Int64}, protein::Int64, translation::Int64, transcription_rate::Float64, translation_limit::Float64}, budget::Float64, strategy::Symbol)
+      @ Main.var"##PS3Part#296".PS3Checks /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/test_support.jl:71
+    [4] (::Main.var"##PS3Part#296".var"#104#105"{Float64})(strategy::Symbol)
+      @ Main.var"##PS3Part#296" ./none:-1
+    [5] iterate
+      @ ./generator.jl:48 [inlined]
+    [6] iterate
+      @ ./iterators.jl:1262 [inlined]
+    [7] iterate
+      @ ./iterators.jl:1256 [inlined]
+    [8] _all(f::typeof(identity), itr::Base.Iterators.Flatten{Base.Generator{NTuple{5, Float64}, Main.var"##PS3Part#296".var"#102#103"}}, ::Colon)
+      @ Base ./anyall.jl:196
+    [9] all(f::Function, itr::Base.Iterators.Flatten{Base.Generator{NTuple{5, Float64}, Main.var"##PS3Part#296".var"#102#103"}})
+      @ Base ./anyall.jl:188
+   [10] all(itr::Base.Iterators.Flatten{Base.Generator{NTuple{5, Float64}, Main.var"##PS3Part#296".var"#102#103"}})
+      @ Base ./anyall.jl:80
+   [11] (::Main.var"##PS3Part#296".var"#100#101")()
+      @ Main.var"##PS3Part#296" /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:49
+   [12] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+   [13] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:677 [inlined]
+   [14] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+   [15] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [16] macro expansion
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:56 [inlined]
+   [17] macro expansion
+      @ ~/.julia/juliaup/julia-1.12.7+0.aarch64.apple.darwin14/Julia-1.12.app/Contents/Resources/julia/share/julia/stdlib/v1.12/Test/src/Test.jl:1777 [inlined]
+   [18] top-level scope
+      @ /private/var/folders/82/m7j29m517p9c2201mdkk3m580000gp/T/ps3-validation-ok49mmxq/testme_part_2.jl:54
+Test Summary:                                            | Fail  Error  Total  Time
+PS3 Part 2 (24 tests)                                    |    5     19     24  0.3s
+  toy production rates and unit conversion               |           1      1  0.0s
+  input budget order retained                            |           1      1  0.0s
+  duplicate budgets retained                             |           1      1  0.0s
+  empty budget vector                                    |           1      1  0.0s
+  model and budget vector preserved                      |           1      1  0.0s
+  deGFP production without external amino acids          |           1      1  0.0s
+  equal production at 0.5                                |           1      1  0.0s
+  optimized production at 0.5                            |           1      1  0.0s
+  equal production at 1.0                                |           1      1  0.0s
+  optimized production at 1.0                            |           1      1  0.0s
+  equal production at 2.0                                |           1      1  0.0s
+  optimized production at 2.0                            |           1      1  0.0s
+  both strategies reach the expression limit             |           1      1  0.0s
+  production is nondecreasing                            |           1      1  0.0s
+  optimized production is at least equal production      |           1      1  0.0s
+  tighter protein bound is respected                     |           1      1  0.0s
+  curve follows a changed protein column                 |           1      1  0.0s
+  different glucose condition changes production         |           1      1  0.0s
+  negative budget rejected                               |    1             1  0.0s
+  infinite budget rejected                               |    1             1  0.0s
+  NaN budget rejected                                    |    1             1  0.0s
+  nonoptimal status is handled before reading fluxes     |    1             1  0.0s
+  invalid later budget rejected                          |    1             1  0.0s
+  real allocations satisfy balances, bounds, and budgets |           1      1  0.0s
+RNG of the outermost testset: Random.Xoshiro(0xa6d83eee95235add, 0xeb2831b58bb308fa, 0xd9fe1720bafd8f9e, 0xed4161c160923cc6, 0x2710f3fc832fed4b)
+
+Submission summary
+testme_part_1.jl: some tests failed
+testme_part_2.jl: some tests failed
+Outputs: not generated because tests need attention
+Discussion: Question 1 still has a placeholder
+Discussion: Question 2 still has a placeholder
+Discussion: Question 3 still has a placeholder
+Status: WORK NEEDS ATTENTION
+Wrote MANIFEST.txt. Zip the assignment folder, including responses and outputs.
+Name it CHEME-4800-5800-PS3-<your netid>.zip and upload it to Canvas yourself.
+Submit your current work by the initial deadline even if some tests still fail.

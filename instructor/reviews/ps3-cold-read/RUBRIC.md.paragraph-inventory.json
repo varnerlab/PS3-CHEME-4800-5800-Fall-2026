@@ -1,0 +1,22 @@
+[
+  {
+    "id": "B002",
+    "first_sentence": "PS3 is worth a maximum of **4 points**.",
+    "last_sentence": "A test that cannot run counts as failed."
+  },
+  {
+    "id": "B004",
+    "first_sentence": "After all tests pass, the instructor checks that:",
+    "last_sentence": "After all tests pass, the instructor checks that:"
+  },
+  {
+    "id": "B006",
+    "first_sentence": "The instructor tests the submitted `src/Compute.jl`, any student helper files, and `Include.jl` in a clean assignment copy.",
+    "last_sentence": "Passing all tests leaves the final score pending instructor review."
+  },
+  {
+    "id": "B007",
+    "first_sentence": "The initial-submission, revision, independent-work, and reference-solution policies in [README.md](README.md) apply.",
+    "last_sentence": "The initial-submission, revision, independent-work, and reference-solution policies in [README.md](README.md) apply."
+  }
+]

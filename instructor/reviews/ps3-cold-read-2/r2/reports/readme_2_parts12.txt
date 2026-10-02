@@ -1,0 +1,55 @@
+README.md:B019 | FORWARD | 1 | "let $p$ be the protein-output column, `model.protein`" | The variable name `model` is new. Earlier text only said load_model returns a named tuple. | `model` is the named tuple returned by load_model.
+README.md:B020 | ORDER | 1 | "$\mathbf{A}\mathbf{v}\leq\mathbf{b}$" | A, b, ℓ and u appear in the problem before they are defined. What A and b actually hold only becomes clear in B024 and B027. | Placeholders that are defined in the paragraphs below.
+README.md:B020/B023 | INCONSISTENT | 2 | "u_j^{\mathrm{equal}}=\min(u_j,U/K)" | In B020, u is the bound the LP actually uses. In B023, u_j means the model's original bound, which B023 never calls "original" (that word first appears in B025). The display never shows that u changes with strategy. | The LP's u is strategy-specific: u^equal on supply columns under equal allocation, model.upper otherwise.
+README.md:B021 | OVERLOAD | 2 | "Define $\mathcal{I}$ as the set of amino-acid supply columns, `model.amino_acid_uptake`; let" | One sentence defines I, its code name, K, U, U's sign, U's units and its code argument. | Three separate definitions: I = supply column indices, K = their count, U = budget argument.
+README.md:B021 | FORWARD | 1 | "the `budget` argument of your functions" | No function has been named yet, so it is unclear which functions take `budget`. | allocation_constraints (and later production_curve).
+README.md:B021 | INCONSISTENT | 1 | "`model.amino_acid_uptake`" | The field says "uptake" while the prose always says "supply". It makes me wonder if these are different reactions. | Same thing: the amino-acid supply reactions.
+README.md:B021 | REREAD | 1 | "hold any additional supply inequality" | "any" plus singular "inequality" leaves unclear whether there are zero, one or several rows. | Zero rows for equal allocation, one row for optimized.
+README.md:B022 | REFERENT | 1 | "Its upper bound is given by:" | "Its" refers back to "each amino acid", but a bound belongs to a supply flux, not to an amino acid. | The upper bound of amino acid j's supply-reaction flux.
+README.md:B027 | ORDER | 1 | "Metabolic synthesis of amino acids remains available under both strategies" | This point covers both strategies but is tucked at the end of the optimized-allocation paragraph. | General modeling point; belongs before the two strategies.
+README.md:B029 | REREAD | 2 | "Copy the bound arrays so that solving one scenario cannot change the next" | "Scenario" is undefined. The risk is changing model.upper in place while building constraints, not during solving, so "solving" misleads. | Use copies of model.lower/upper before editing so each budget/strategy starts from the original model.
+README.md:B029 | PURPOSE | 1 | "returns a named tuple with fields `lower`, `upper`, `A`, and `b`" | Neither strategy changes `lower` (B030), so it is unclear why it is returned and whether it must be a copy. | Return an unchanged copy of model.lower so the tuple can go straight to solve_lp.
+README.md:B030 | UNDEFINED | 2 | "Your functions must also work on the small test networks" | Test networks were never introduced. Where they come from and which fields they have is not said. | Tests build toy models with the same named-tuple fields as load_model.
+README.md:B030 | REREAD | 1 | "Use the model's supplied column indices." | Vague as a standalone instruction. | Use model.protein and model.amino_acid_uptake; do not hard-code column numbers.
+README.md:B030 | PURPOSE | 1 | "and at least one supply column" | The reason this guarantee matters is not stated. | It ensures K ≥ 1, so U/K is defined.
+README.md:B030 | REREAD | 1 | "Keep all lower bounds and unrelated upper bounds unchanged." | "Unrelated" is not defined. | Upper bounds of all non-supply columns, and every bound under optimized allocation.
+README.md:B033 | ORDER | 1 | "Explain these numbers to yourself before testing the larger network." | The hand check comes after the test command in B032, so a reader following in order has already run the tests. | Do the hand check before running testme_part_1.jl.
+README.md:B033 | REFERENT | 2 | "before testing the larger network" | B030 says the Part 1 tests use small networks, so it is unclear which "larger network" this means or when it gets tested. | The full 146-species, 265-reaction model, probably in Part 2.
+README.md:B033 | INCONSISTENT | 1 | "The balances are $v_1=2v_p$ and $v_2=v_p$." | The toy has no metabolic synthesis, right after B027 stressed that synthesis remains available. The text never says the toy leaves it out. | The toy deliberately has supply only, so the arithmetic is clean.
+README.md:B035 | FORWARD | 1 | "which maximizes $\mathbf{c}^{\top}\mathbf{v}$" | c is a new symbol; B020 wrote the objective as v_p. | c = protein_objective(model), so cᵀv = v_p.
+README.md:B037 | ORDER | 1 | "In that case the solver returns `nothing` for `flux` and `objective`." | The reason for checking `optimal` arrives after the instruction to throw. "That case" makes me look back. | When the solve is not optimal, flux and objective are `nothing`.
+README.md:B037 | REREAD | 1 | "throw an `ErrorException` naming the budget, strategy, and status" | No message format is given and the type of `status` is unknown. Unclear whether tests check the message text. | error(...) with a message containing the budget value, :equal/:optimized, and result.status.
+README.md:B037 | UNDEFINED | 1 | "The result contains `status`, `optimal`, `flux`, and `objective`." | Field types and units are not given, e.g. whether `objective` is in mM/h. | optimal is a Bool; objective = v_p in mM/h and must be multiplied by 1000.
+README.md:B038 | REFERENT | 1 | "both production rates must be in µM/h" | The text never says outright that the `equal` and `optimized` fields are scalar maximum production rates. | equal = 1000 × objective under :equal; optimized likewise.
+README.md:B038 | REREAD | 1 | "Negative or nonfinite budgets raise `ArgumentError`." | Unclear whether to check every budget before any solve or rely on allocation_constraints throwing during the loop. | Either should be accepted as long as an ArgumentError is raised.
+README.md:B038 | UNDEFINED | 1 | "An empty input returns an empty vector." | The element type of the empty vector is not specified. | Any empty vector (probably of named tuples).
+README.md:B040 | ORDER | 1 | "julia --startup-file=no --project=. runproduction.jl" | The command to run the driver appears before B041 says what the driver is or does. | B041 explains it.
+README.md:B042 | REREAD | 2 | "and the translation capacity, converted to a protein production rate in µM/h" | B014 defined translation_limit as a bound on translation initiation (mM/h). It is not said how initiation converts to a protein rate, or whether "converted" applies to the curves too. | A horizontal line at translation_limit × 1000 (one initiation per protein), the upper limit on production.
+README.md:B042 | REREAD | 1 | "actual supply fluxes for both strategies at a total budget of **1 mM/h**" | production_curve returns only rates, so where these fluxes come from is unclear. Units are not stated, and it is unclear what "actual" contrasts with. | The driver runs its own solve using the student's functions; fluxes in mM/h, i.e. the solver's chosen solution as opposed to the bounds.
+README.md:B043 | FORWARD | 2 | "Until you complete `supply_ranges` in Part 3, the driver skips the Part 3 files" | `supply_ranges` and the "Part 3 files" have not been introduced. | The fourth function (flux variability) and its output files.
+README.md:B043 | PURPOSE | 2 | "Tests check feasibility and production, so they accept alternative optimal allocations." | production_curve returns no allocation, so it is unclear which tests check allocations and why this is said here. | Reassurance that your allocation CSV may differ from the reference or classmates and still be correct.
+README.md:B043 | OVERLOAD | 1 | "Open the plot and use it with the CSV tables to answer questions" | One paragraph mixes driver skip behavior, response questions, alternative optima, test tolerance and a Part 3 preview. | Split the "answer questions" instruction from the alternative-optima preview.
+README.md:B043 | INCONSISTENT | 1 | "The optimized allocation can have multiple equally productive flux distributions." | It implies only optimized allocation has alternative optima. B003 said "many supply vectors" without naming a strategy, and equal allocation could too. | Both may; Part 3 focuses on the optimized case.
+
+README.md:B019: Names the flux vector v and the protein-output index p (model.protein), and introduces the LP.
+README.md:B020: The LP: maximize protein output flux subject to steady state, flux bounds and extra inequalities Av ≤ b.
+README.md:B021: Defines ℓ, u, A, b, the supply-column set I, its size K, and the budget U (the `budget` argument, mM/h).
+README.md:B022: Equal allocation caps each amino acid's supply at one equal share of the budget.
+README.md:B023: Equal-allocation upper bound for supply column j = min(original bound, U/K).
+README.md:B024: Unused shares cannot be transferred; equal allocation needs no extra inequality (A is 0×n, b is empty).
+README.md:B025: Optimized allocation keeps the original bounds and adds one total-supply constraint.
+README.md:B026: Sum of supply fluxes ≤ U.
+README.md:B027: The solver may split the budget freely. A is a 1×n row of ones on supply columns, b = [U]. Metabolic synthesis is not counted as supply.
+README.md:B028: Introduces the two Part 1 functions.
+README.md:B029: Specs for protein_objective (unit vector at the protein column) and allocation_constraints (returns lower/upper/A/b, copies the bounds, two strategies, ArgumentError on bad input).
+README.md:B030: Functions must be general (no hard-coded indices) and work on small test networks, leaving non-supply bounds unchanged; UNCLEAR - the test networks are never introduced.
+README.md:B031: Command to run the Part 1 tests.
+README.md:B033: Toy example (two amino acids, budget 6) giving 1.5 for equal vs 2 for optimized as a hand check.
+README.md:B035: production_curve solves both LPs per budget using the Part 1 functions and the supplied solve_lp.
+README.md:B037: How to read solve_lp's result; throw ErrorException on non-optimal solves.
+README.md:B038: Return format: one (budget, equal, optimized) tuple per input in input order, rates in µM/h, with edge cases.
+README.md:B039: Run the Part 2 tests and the driver.
+README.md:B041: The driver sweeps budgets from 0 to 4 mM/h in steps of 0.1 and writes output files.
+README.md:B042: Output files: plot with translation capacity, curve CSV, and allocation CSV at budget 1 with feasibility checks; UNCLEAR - how the translation capacity is converted and where the allocation fluxes come from.
+README.md:B043: Part 3 outputs are skipped until supply_ranges exists; use the plot and CSVs for questions 1 and 2; alternative optima exist and are accepted; UNCLEAR - mixes several unrelated points and forward references.
+TOTALS: severity-3 = 0; severity-2 = 8; severity-1 = 24

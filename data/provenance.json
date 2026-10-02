@@ -1,0 +1,31 @@
+{
+  "repository": "https://github.com/varnerlab/Sequence-Specific-FBA-CFPS-Publication-Code",
+  "publication": {
+    "title": "Sequence Specific Modeling of E. coli Cell-Free Protein Synthesis",
+    "authors": [
+      "Michael Vilkhovoy",
+      "Nicholas Horvath",
+      "Che-Hsiao Shih",
+      "Joseph A. Wayman",
+      "Kara Calhoun",
+      "James Swartz",
+      "Jeffrey D. Varner"
+    ],
+    "year": 2018,
+    "journal": "ACS Synthetic Biology",
+    "volume": 7,
+    "issue": 8,
+    "pages": "1844-1857",
+    "doi": "10.1021/acssynbio.7b00465",
+    "pmid": "29944340",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/29944340/"
+  },
+  "commit": "e003d4b630f09f9ad0d177737cb13832a9071603",
+  "source_sha256": {
+    "deGFP/Network.dat": "61ef96dc7069558ca13371ae0b03bd3f3703c5411f017a14c12117ad09a259a6",
+    "deGFP/DataDictionary.jl": "d64e2fb112cfb0fad9fe6c3c53c62e963b62be169d8824da55f9b5a0c2e33ce6",
+    "deGFP/TXTLDictionary.jl": "fda11b2c8985662596df15bee923569059401845e55681055988b11ecbb769d8",
+    "Model/Bounds.jl": "7bad4f3f2bb022c855012d8ebc5994ddea17252030a1750e0d63dbcc0a1bb0ca",
+    "Model/Solve.jl": "07f6bd620585205f0b1ed61b5d94249be120275d0338a18b76b776e27c80e44d"
+  }
+}

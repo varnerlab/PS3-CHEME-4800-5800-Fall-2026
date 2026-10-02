@@ -1,0 +1,20 @@
+{
+  "README.md": {
+    "paragraphs_before": 30,
+    "paragraphs_after": 30,
+    "words_before": 1434,
+    "words_after": 1433,
+    "changed_blocks": [
+      11,
+      29,
+      38
+    ]
+  },
+  "RUBRIC.md": {
+    "paragraphs_before": 4,
+    "paragraphs_after": 4,
+    "words_before": 276,
+    "words_after": 276,
+    "changed_blocks": []
+  }
+}

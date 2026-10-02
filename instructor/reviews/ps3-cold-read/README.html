@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>PS3 README</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">PS3 README</h1>
+</header>
+<h1 id="problem-set-3-ps3-feeding-a-cell-free-protein-factory">Problem
+Set 3 (PS3): Feeding a cell-free protein factory</h1>
+<p>A cell-free protein synthesis system uses cellular machinery in a
+reaction mixture to make a protein. That machinery needs amino acids,
+nucleotides, and energy. The metabolic reactions in the mixture can make
+amino acids from other available compounds, and amino acids can also be
+supplied directly.</p>
+<p>You will use linear programming to predict the production rate of
+deGFP, a green fluorescent protein, under two amino-acid supply
+strategies. With <strong>equal allocation</strong>, every amino acid
+receives the same supply limit. With <strong>optimized
+allocation</strong>, the solver distributes a shared supply budget among
+the amino acids. Your final result is a plot of protein production
+against the total supply budget.</p>
+<p>This assignment extends the flux balance analysis in L6b. The
+supplied model is adapted from the model described by <strong>Vilkhovoy
+et al. (2018), “Sequence Specific Modeling of E. coli Cell-Free Protein
+Synthesis,” ACS Synthetic Biology, 7(8), 1844–1857</strong> (<a
+href="https://pubmed.ncbi.nlm.nih.gov/29944340/">paper</a>, <a
+href="https://doi.org/10.1021/acssynbio.7b00465">DOI:
+10.1021/acssynbio.7b00465</a>). The code and model data are available in
+the Varner laboratory's <a
+href="https://github.com/varnerlab/Sequence-Specific-FBA-CFPS-Publication-Code">sequence-specific
+cell-free protein synthesis repository</a>. The <a
+href="data/README.md">data notes</a> identify the source and the PS3
+operating conditions.</p>
+<h2 id="logistics">Logistics</h2>
+<ul>
+<li><strong>Release:</strong> Saturday, October 3, 2026. <strong>Initial
+submission deadline:</strong> <strong>11:59 PM ET on Saturday, October
+17, 2026</strong>.</li>
+<li><strong>Submission:</strong> Upload
+<code>CHEME-4800-5800-PS3-&lt;your netid&gt;.zip</code> to Canvas.
+Replace the complete placeholder with your NetID.</li>
+<li><strong>Infinite-revision policy:</strong> Submit something by the
+initial deadline to participate. Eligible students may then revise and
+resubmit until the end of the semester; the highest score is retained.
+No initial submission means a score of <code>0</code> and no access to
+later revisions.</li>
+<li><strong>Reference solution:</strong> Released after the initial
+deadline. You may consult it to understand mistakes and debug your work,
+but may not copy it. Copying the reference solution results in a score
+of <code>0</code>.</li>
+<li><strong>Group and AI policy:</strong> Submit independent work. You
+may discuss ideas with classmates but may not share code or solutions
+directly. You may use Julia documentation, AI tools, and internet
+resources. You are responsible for understanding and explaining your
+implementation.</li>
+<li><strong>Grading:</strong> Maximum <code>4</code> points; see <a
+href="RUBRIC.md">RUBRIC.md</a>.</li>
+</ul>
+<h2 id="getting-started">Getting started</h2>
+<p>Use Julia <code>1.12.7</code>. The assignment contains its own data
+and source files. Open the extracted assignment folder in VS Code. Run
+these commands from the folder containing this README and <a
+href="Project.toml">Project.toml</a>:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--startup-file</span><span class="op">=</span>no <span class="at">--project</span><span class="op">=</span>. <span class="at">-e</span> <span class="st">&#39;using Pkg; Pkg.instantiate()&#39;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--startup-file</span><span class="op">=</span>no <span class="at">--project</span><span class="op">=</span>. check_submission.jl</span></code></pre></div>
+<p>The first command installs the required packages and can take several
+minutes. The second runs the assignment tests. The three functions in <a
+href="src/Compute.jl">src/Compute.jl</a> initially raise errors because
+you must implement them. Tests will fail until that work is
+complete.</p>
+<p>Implement the functions; answer the prompts in <a
+href="responses.md">responses.md</a>. Keep helper files in
+<code>src/</code>; edit <a href="Include.jl">Include.jl</a> to load
+them. Edit <code>src/Compute.jl</code>, <code>Include.jl</code>, and
+<code>responses.md</code> and add helpers. Keep all other supplied files
+unchanged.</p>
+<h2 id="the-model-and-its-operating-conditions">The model and its
+operating conditions</h2>
+<p>The model contains 146 species and 265 reactions. It includes
+metabolism, transcription, translation, amino-acid supply, and protein
+output. The supplied <a href="src/Model.jl">load_model function</a>
+reads the stoichiometric matrix and sets the operating conditions. Its
+returned named tuple contains:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>S</code></td>
+<td>Stoichiometric matrix; rows are species and columns are
+reactions.</td>
+</tr>
+<tr>
+<td><code>reactions</code>, <code>metabolites</code></td>
+<td>Identifiers in matrix column and row order.</td>
+</tr>
+<tr>
+<td><code>lower</code>, <code>upper</code></td>
+<td>One lower and upper flux bound per reaction, in mM/h.</td>
+</tr>
+<tr>
+<td><code>amino_acids</code></td>
+<td>Names of the 20 supplied amino acids.</td>
+</tr>
+<tr>
+<td><code>amino_acid_uptake</code></td>
+<td>Column indices of their supply reactions.</td>
+</tr>
+<tr>
+<td><code>protein</code></td>
+<td>Column index of the deGFP output reaction.</td>
+</tr>
+<tr>
+<td><code>translation</code></td>
+<td>Column index of translation initiation.</td>
+</tr>
+<tr>
+<td><code>translation_limit</code></td>
+<td>Fixed translation-capacity bound, in mM/h.</td>
+</tr>
+</tbody>
+</table>
+<p>The glucose supply limit is <strong>1 mM/h</strong> and the oxygen
+supply limit is <strong>100 mM/h</strong>. Amino-acid synthesis is
+enabled; the model's designated amino-acid degradation reactions and
+amino-acid removal reactions are blocked. Transcription and translation
+bounds are calculated from fixed expression parameters before solving.
+Use the supplied conditions for both strategies.</p>
+<p>Supply reactions are written as <code>[] --&gt; species</code> and
+have <strong>nonnegative</strong> fluxes. Each amino-acid supply flux
+therefore contributes positively to the budget. The deGFP output
+reaction removes protein from the balanced network and records its
+production rate. Metabolic intermediates satisfy steady-state balances
+while protein leaves through that output reaction.</p>
+<p>All model fluxes are in <strong>mM/h</strong>, millimoles per liter
+per hour. Report protein production in <strong>µM/h</strong> by
+multiplying its model flux by 1000. The supply budget is a rate limit;
+it does not specify an initial concentration or a monetary cost. This
+static model predicts feasible production rates under fixed
+conditions.</p>
+<h2 id="part-1-construct-the-objective-and-supply-constraints">Part 1:
+Construct the objective and supply constraints</h2>
+<p>Let the vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐯</mi><annotation encoding="application/x-tex">\mathbf{v}</annotation></semantics></math>
+contain the reaction fluxes, and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+be the protein-output column. The production problem is given by:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><munder><mi mathvariant="normal">maximize</mi><mi>𝐯</mi></munder><mspace width="1.0em"></mspace></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><msub><mi>v</mi><mi>p</mi></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"><mtext mathvariant="normal">subject to</mtext><mspace width="1.0em"></mspace></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>𝐒</mi><mi>𝐯</mi><mo>=</mo><mn>𝟎</mn><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi mathvariant="bold">ℓ</mi><mo>≤</mo><mi>𝐯</mi><mo>≤</mo><mi>𝐮</mi><mo>,</mo></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right; padding-right: 0"></mtd><mtd columnalign="left" style="text-align: left; padding-left: 0"><mi>𝐀</mi><mi>𝐯</mi><mo>≤</mo><mi>𝐛</mi><mi>.</mi></mtd></mtr></mtable><annotation encoding="application/x-tex">
+\begin{aligned}
+\underset{\mathbf{v}}{\operatorname{maximize}}\quad &amp; v_p\\
+\text{subject to}\quad &amp; \mathbf{S}\mathbf{v}=\mathbf{0},\\
+&amp; \boldsymbol{\ell}\leq\mathbf{v}\leq\mathbf{u},\\
+&amp; \mathbf{A}\mathbf{v}\leq\mathbf{b}.
+\end{aligned}
+</annotation></semantics></math></p>
+<p>The vectors
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi mathvariant="bold">ℓ</mi><annotation encoding="application/x-tex">\boldsymbol{\ell}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐮</mi><annotation encoding="application/x-tex">\mathbf{u}</annotation></semantics></math>
+specify the flux bounds. The matrix
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐀</mi><annotation encoding="application/x-tex">\mathbf{A}</annotation></semantics></math>
+and vector
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝐛</mi><annotation encoding="application/x-tex">\mathbf{b}</annotation></semantics></math>
+hold any additional supply inequality. Define
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℐ</mi><annotation encoding="application/x-tex">\mathcal{I}</annotation></semantics></math>
+as the set of amino-acid supply columns, let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>K</mi><mo>=</mo><mo stretchy="false" form="prefix">|</mo><mi>ℐ</mi><mo stretchy="false" form="prefix">|</mo></mrow><annotation encoding="application/x-tex">K=|\mathcal{I}|</annotation></semantics></math>,
+and let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">U\geq0</annotation></semantics></math>
+be the total supply budget in mM/h.</p>
+<p><strong>Equal allocation.</strong> Each amino acid may use at most
+one equal share of the budget. Its upper bound is given by:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>u</mi><mi>j</mi><mrow><mi mathvariant="normal">e</mi><mi mathvariant="normal">q</mi><mi mathvariant="normal">u</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">l</mi></mrow></msubsup><mo>=</mo><mrow><mi mathvariant="normal">min</mi><mo>&#8289;</mo></mrow><mo stretchy="false" form="prefix">(</mo><msub><mi>u</mi><mi>j</mi></msub><mo>,</mo><mi>U</mi><mi>/</mi><mi>K</mi><mo stretchy="false" form="postfix">)</mo><mo>,</mo><mspace width="2.0em"></mspace><mi>j</mi><mo>∈</mo><mi>ℐ</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+u_j^{\mathrm{equal}}=\min(u_j,U/K),\qquad j\in\mathcal{I}.
+</annotation></semantics></math></p>
+<p>The supply fluxes can be smaller than their limits. Any unused share
+remains unavailable to the other amino acids. These individual limits
+already enforce the total budget, so return an <code>A</code> with zero
+rows and an empty <code>b</code>.</p>
+<p><strong>Optimized allocation.</strong> Retain the original individual
+bounds and add one shared supply constraint, given by:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><munder><mo>∑</mo><mrow><mi>j</mi><mo>∈</mo><mi>ℐ</mi></mrow></munder><msub><mi>v</mi><mi>j</mi></msub><mo>≤</mo><mi>U</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\sum_{j\in\mathcal{I}}v_j\leq U.
+</annotation></semantics></math></p>
+<p>The solver may distribute the available supply unequally. One row of
+<code>A</code> has a coefficient of one at each amino-acid supply column
+and zero elsewhere; the corresponding entry of <code>b</code> is
+<code>U</code>. Metabolic synthesis of amino acids remains available
+under both strategies and does not count as external supply.</p>
+<p>Implement two functions in <a
+href="src/Compute.jl">src/Compute.jl</a>:</p>
+<ol type="1">
+<li><strong>protein_objective(model)</strong> returns a
+<code>Vector{Float64}</code> with one coefficient per reaction. Its
+protein-output coefficient is one; the others are zero.</li>
+<li><strong>allocation_constraints(model, budget;
+strategy=:equal)</strong> returns a named tuple with fields
+<code>lower</code>, <code>upper</code>, <code>A</code>, and
+<code>b</code>. Support <code>:equal</code> and <code>:optimized</code>.
+Copy the bound arrays so that solving one scenario cannot change the
+next. Reject a negative or nonfinite budget or an unknown strategy with
+<code>ArgumentError</code>.</li>
+</ol>
+<p>Use the model's supplied column indices. Your functions must also
+work on the small test networks, which have different numbers and orders
+of reactions and amino-acid supplies. All test models have nonnegative
+supply fluxes and at least one supply column. Keep all lower bounds and
+unrelated upper bounds unchanged.</p>
+<p>Run the Part 1 checks with:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--startup-file</span><span class="op">=</span>no <span class="at">--project</span><span class="op">=</span>. testme_part_1.jl</span></code></pre></div>
+<p>For a hand check, consider two amino acids with supply fluxes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mn>1</mn></msub><annotation encoding="application/x-tex">v_1</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mn>2</mn></msub><annotation encoding="application/x-tex">v_2</annotation></semantics></math>.
+One unit of protein output
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>v</mi><mi>p</mi></msub><annotation encoding="application/x-tex">v_p</annotation></semantics></math>
+consumes two units of the first amino acid and one unit of the second.
+The balances are
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>=</mo><mn>2</mn><msub><mi>v</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">v_1=2v_p</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>v</mi><mn>2</mn></msub><mo>=</mo><msub><mi>v</mi><mi>p</mi></msub></mrow><annotation encoding="application/x-tex">v_2=v_p</annotation></semantics></math>.
+With a total supply budget of 6 and all other bounds loose, equal
+allocation allows at most <strong>1.5</strong> units of protein output;
+optimized allocation allows <strong>2</strong>. Explain these numbers to
+yourself before testing the larger network.</p>
+<h2 id="part-2-compute-and-interpret-the-production-curves">Part 2:
+Compute and interpret the production curves</h2>
+<p>Implement <strong>production_curve(model, budgets)</strong> in <a
+href="src/Compute.jl">src/Compute.jl</a>. For each budget, construct
+both sets of constraints and solve both LPs. Use your Part 1 functions
+and the supplied <a href="src/Solver.jl">solve_lp function</a>. A single
+solve has this form:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode julia"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>limits <span class="op">=</span> <span class="fu">allocation_constraints</span>(model, budget; strategy<span class="op">=:</span>equal);</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="fu">protein_objective</span>(model);</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> <span class="fu">solve_lp</span>(model.S, limits.lower, limits.upper, c;</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    A<span class="op">=</span>limits.A, b<span class="op">=</span>limits.b);</span></code></pre></div>
+<p>The result contains <code>status</code>, <code>optimal</code>,
+<code>flux</code>, and <code>objective</code>. Check
+<code>result.optimal</code> before reading the fluxes. If a solve is not
+optimal, throw an <code>ErrorException</code> naming the budget,
+strategy, and status. In that case the solver returns
+<code>nothing</code> for <code>flux</code> and
+<code>objective</code>.</p>
+<p>Return a vector containing one named tuple
+<code>(; budget, equal, optimized)</code> per input budget. The budget
+remains in mM/h; both production rates must be in µM/h. Preserve the
+input order, including repeated budgets. An empty input returns an empty
+vector. Negative or nonfinite budgets raise
+<code>ArgumentError</code>.</p>
+<p>After completing the function, run:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--startup-file</span><span class="op">=</span>no <span class="at">--project</span><span class="op">=</span>. testme_part_2.jl</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--startup-file</span><span class="op">=</span>no <span class="at">--project</span><span class="op">=</span>. runproduction.jl</span></code></pre></div>
+<p>The supplied driver evaluates budgets from <strong>0 to 4 mM/h in
+steps of 0.1</strong> and writes these files:</p>
+<ul>
+<li><code>outputs/production-versus-budget.png</code> and
+<code>.svg</code>: the two production curves and the fixed
+translation-capacity limit.</li>
+<li><code>outputs/production-versus-budget.csv</code>: the numerical
+values used in the plot.</li>
+<li><code>outputs/amino-acid-allocation.csv</code>: actual supply fluxes
+for both strategies at a total budget of <strong>1 mM/h</strong>, with
+independent feasibility checks reported in the terminal.</li>
+</ul>
+<p>Open the plot and use it with the tables to answer <a
+href="responses.md">responses.md</a>. The optimized allocation can have
+multiple equally productive flux distributions. Tests check feasibility
+and production, so they accept alternative optimal allocations.</p>
+<h2 id="checking-and-submitting-your-work">Checking and submitting your
+work</h2>
+<p>Run the complete check after finishing the code and responses:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">julia</span> <span class="at">--startup-file</span><span class="op">=</span>no <span class="at">--project</span><span class="op">=</span>. check_submission.jl</span></code></pre></div>
+<p>The checker runs <strong>24 tests per part, 48 total</strong>,
+records their results and source file fingerprints in
+<code>MANIFEST.txt</code>, and warns about unanswered discussion
+prompts. If both test suites pass, it generates the plot and data tables
+from your code. The instructor still reviews the implementation and
+written explanations.</p>
+<p>Zip the entire assignment folder, including your source, data,
+responses, <code>MANIFEST.txt</code>, and generated files in
+<code>outputs/</code>. Name the archive
+<code>CHEME-4800-5800-PS3-&lt;your netid&gt;.zip</code> and upload it to
+Canvas. The checker runs locally; you must upload the ZIP yourself.</p>
+<p>If some tests still fail at the deadline, submit your current work to
+receive partial credit and participate in the infinite-revision
+policy.</p>
+</body>
+</html>

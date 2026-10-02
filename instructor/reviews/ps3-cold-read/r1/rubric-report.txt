@@ -1,0 +1,9 @@
+No problems flagged in the RUBRIC blocks.
+
+Paragraph roles:
+RUBRIC.md:B002 — Establishes the four-point maximum, the number and location of scored tests, and how tests that cannot run are counted.
+RUBRIC.md:B004 — Introduces the instructor-reviewed requirements for full credit after all tests pass.
+RUBRIC.md:B006 — Explains how the submitted code is tested, which supplied files govern grading, why alternative optimal solutions are acceptable, and why passing tests does not alone establish the final score.
+RUBRIC.md:B007 — Applies the previously read README policies to grading.
+
+TOTALS: severity-3 = 0; severity-2 = 0; severity-1 = 0.
