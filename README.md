@@ -84,7 +84,7 @@ Let $\mathbf{v}$ be the reaction fluxes and $p$ the protein-output column
 
 $$
 \begin{aligned}
-\underset{\mathbf{v}}{\operatorname{maximize}}\quad & v_p\\
+\underset{\mathbf{v}}{\text{maximize}}\quad & v_p\\
 \text{subject to}\quad & \mathbf{S}\mathbf{v}=\mathbf{0},\\
 & \boldsymbol{\ell}\leq\mathbf{v}\leq\mathbf{u},\\
 & \mathbf{A}\mathbf{v}\leq\mathbf{b}.

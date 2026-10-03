@@ -65,6 +65,10 @@ def check_contents(student, names):
     require((student / "TRACK.txt").read_text().strip() == "standard", "TRACK.txt must ship as standard")
 
     for markdown in student.rglob("*.md"):
+        # GitHub's math renderer rejects these macros and shows an error in place of the math -
+        for macro in ("\\operatorname", "\\DeclareMathOperator", "\\newcommand"):
+            require(macro not in markdown.read_text(),
+                    f"{markdown.relative_to(student)} uses {macro}, which GitHub cannot render")
         for target in re.findall(r"\]\(([^)]+)\)", markdown.read_text()):
             if target.startswith(("https:", "http:", "mailto:", "#")):
                 continue

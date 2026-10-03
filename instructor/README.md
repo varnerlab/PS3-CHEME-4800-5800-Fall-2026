@@ -37,8 +37,9 @@ Release is Saturday, October 3, 2026. The initial submission deadline is
 performed by these scripts.
 
 Students download the **Source code (zip)** of the tagged GitHub release
-`ps3-cheme-4800-5800-2026.1`; `.gitattributes` keeps instructor material out of
-that archive. Pushing the tag runs the
+`ps3-cheme-4800-5800-2026.2`; `.gitattributes` keeps instructor material out of
+that archive. Tag `.1` was never published: its README used `\operatorname`,
+which GitHub's math renderer rejects. Pushing the tag runs the
 [release Action](../.github/workflows/release-ps3.yml), which runs
 [validate_release.py](validate_release.py) on the source archive and creates a
 **draft** release with the [release notes](release-notes.md). That validator
