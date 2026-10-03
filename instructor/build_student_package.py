@@ -9,7 +9,7 @@ import argparse
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
-ROOT_FILES = ["README.md", "RUBRIC.md", "responses.md", "Project.toml", "Manifest.toml",
+ROOT_FILES = ["README.md", "RUBRIC.md", "responses.md", "TRACK.txt", "Project.toml", "Manifest.toml",
               "Include.jl", "test_support.jl", "testme_part_1.jl", "testme_part_2.jl", "testme_part_3.jl",
               "check_submission.jl", "runproduction.jl", "LICENSE", "THIRD_PARTY_NOTICES.txt"]
 DIRECTORIES = ["src", "data"]
@@ -32,7 +32,7 @@ def main():
 
     Return None after printing the archive path and file count. Reject unset
     dates unless --draft is supplied. Raise AssertionError if forbidden material
-    is packaged or the four student stubs are absent. File errors propagate.
+    is packaged, the four student stubs are absent, or TRACK.txt is not standard. File errors propagate.
     """
     parser = argparse.ArgumentParser()
     parser.add_argument("--draft", action="store_true", help="Allow dates marked to be announced")
@@ -53,6 +53,7 @@ def main():
                        for part in ("solution", "instructor", ".git", "outputs"))
         compute = bundle.read(prefix + "/src/Compute.jl").decode()
         assert compute.count('error("Complete ') == 4, "Student starter must contain exactly four stubs"
+        assert bundle.read(prefix + "/TRACK.txt").decode().strip() == "standard", "Ship TRACK.txt as standard"
     print(f"Built {archive} ({len(names)} files); no reference solution or generated answers included.")
 
 if __name__ == "__main__":

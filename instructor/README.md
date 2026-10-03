@@ -1,11 +1,20 @@
 # PS3 instructor notes
 
 The student task is fixed: one protein (deGFP), equal versus optimized allocation
-of a total amino-acid supply budget, a production-versus-budget plot, and flux
-variability analysis (FVA) of the 20 supply fluxes. The package follows PS2's
-standalone Julia structure with four student functions, three test suites, a
-submission checker, five written responses, and a four-point rubric. The
-supplied LP solver uses JuMP and GLPK. Part 3 cites Mahadevan and Schilling
+of a total amino-acid supply budget and a production-versus-budget plot.
+Parts 1–2 require three functions and two written responses, graded out of four
+points using 48 tests. Optional Advanced work adds flux variability analysis
+(FVA) of the 20 supply fluxes: `supply_ranges`, 24 Part 3 tests, and question 3.
+Complete Advanced work earns one Magic Point after a regular score of 4 and
+teaching-team review; unfinished Advanced work does not reduce the regular score.
+The package uses one source file and one response file for both tracks;
+`TRACK.txt`, shipped as `standard`, selects which checks and reports run. The
+supplied LP solver uses JuMP and GLPK. It follows L6a's urea-cycle interface:
+`build(MyPrimalFluxBalanceAnalysisCalculationModel, data)` and `solve(calculation)`
+with the same five model fields and dictionary result keys. The standalone
+package supplies the type and builder locally. The `A` and `b` keywords add
+PS3's inequalities; nonoptimal solves return the status with `nothing` values
+so student functions can identify the failing budget and strategy. Part 3 cites Mahadevan and Schilling
 (2003), Metabolic Engineering 5(4):264–276,
 [DOI: 10.1016/j.ymben.2003.09.002](https://doi.org/10.1016/j.ymben.2003.09.002).
 
@@ -29,6 +38,21 @@ performed by these scripts.
 
 ## Reproducing the checks
 
+To run the reference solution directly from the assignment root:
+
+```bash
+julia --startup-file=no --project=. check_submission.jl --solution
+```
+
+The reference solution always uses the Advanced track, whatever `TRACK.txt`
+says. This runs all 72 tests, checks `solution/responses.md`, and writes plots and
+tables to `solution/outputs/` and a manifest to `solution/MANIFEST.txt`.
+The student files and outputs stay unchanged. The same flag works with
+`testme_part_1.jl`, `testme_part_2.jl`, `testme_part_3.jl`, and `runproduction.jl`;
+`runproduction.jl --solution` writes all reference reports.
+The default remains the student implementation; a missing local solution causes
+an error rather than falling back to student code.
+
 From the assignment root, install the Julia dependencies and run:
 
 ```bash
@@ -37,12 +61,17 @@ python3 instructor/validate.py
 python3 instructor/build_student_package.py
 ```
 
-The validator copies the student files into temporary directories and substitutes
+The validator first checks the supplied type, builder, and solver interface with
+19 assertions in [test_solver.jl](test_solver.jl), separate from student scores.
+It then copies the student files into temporary directories and substitutes
 the reference implementation only in those copies. It checks all 72 tests, the
 plot driver, and the submission checker's handling of unfinished code, partial
 implementations, source syntax errors, missing responses, and reporting errors.
-It also checks that a submission with only Parts 1 and 2 complete keeps their
-credit and that the driver then writes the production outputs and skips Part 3.
+It also checks that a submission with only Parts 1 and 2 and questions 1–2
+complete passes the checker on the Standard track. On the Advanced track,
+Part 3 test, writing, and output failures are reported separately. On the
+Standard track, the driver writes only production outputs. An invalid
+`TRACK.txt` stops the checker and driver with a clear message.
 Logs are in `instructor/validation-output/`; reference plots and tables are copied
 to `instructor/reference/`. Both directories are ignored by Git and excluded from
 the student package.
@@ -99,8 +128,8 @@ glutamine, and threonine share one 0.05472 mM/h portion of the budget; the
 allocation table's threonine value is one vertex of that set. The supply ranges
 open at U=2.0 (optimized) and U=2.9 (equal), the sampled budgets at which each
 strategy reaches translation capacity. At 99% of maximum output, no supply flux
-is fixed. The fifth written response asks students not to read FVA ranges as
-measurement or parameter uncertainty.
+is fixed. The optional third written response asks students to identify one
+variable supply and explain why one optimal flux vector is not unique.
 
 The shared budget is molar supply per time and volume, with equal weights per
 amino acid. It does not represent economic cost or initial reagent inventory.
