@@ -36,6 +36,12 @@ Release is Saturday, October 3, 2026. The initial submission deadline is
 11:59 PM ET on Saturday, October 17, 2026. No commit, push, tag, GitHub release, or Canvas upload is
 performed by these scripts.
 
+Students download the **Source code (zip)** of the tagged GitHub release
+`ps3-cheme-4800-5800-2026.1`; `.gitattributes` keeps instructor material out of
+that archive. The [release notes](release-notes.md) and
+[Canvas description](canvas-assignment-description.html) target this tag.
+Publish the release before posting the Canvas description.
+
 ## Reproducing the checks
 
 To run the reference solution directly from the assignment root:
