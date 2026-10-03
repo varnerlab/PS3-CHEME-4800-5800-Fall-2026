@@ -38,9 +38,14 @@ performed by these scripts.
 
 Students download the **Source code (zip)** of the tagged GitHub release
 `ps3-cheme-4800-5800-2026.1`; `.gitattributes` keeps instructor material out of
-that archive. The [release notes](release-notes.md) and
-[Canvas description](canvas-assignment-description.html) target this tag.
-Publish the release before posting the Canvas description.
+that archive. Pushing the tag runs the
+[release Action](../.github/workflows/release-ps3.yml), which runs
+[validate_release.py](validate_release.py) on the source archive and creates a
+**draft** release with the [release notes](release-notes.md). That validator
+needs no reference solution; run it locally with
+`python3 instructor/validate_release.py` before tagging. Review and publish the
+draft, then post the [Canvas description](canvas-assignment-description.html),
+which links to the same tag. Later corrections use a new tag.
 
 ## Reproducing the checks
 

@@ -1,0 +1,133 @@
+"""Build and test the Git source archive without access to the private solution.
+
+Run from any directory: python3 instructor/validate_release.py [--ref REF] [--tag TAG]
+The release Action runs this with --tag before creating a draft GitHub release.
+It checks the committed tree only; the working tree and solution/ are not used.
+"""
+import argparse
+import hashlib
+from pathlib import Path
+import re
+import shutil
+import subprocess
+import tempfile
+import zipfile
+from build_student_package import ROOT, ROOT_FILES
+
+# The archive must hold exactly the student package plus Git's own settings files -
+REQUIRED_FILES = set(ROOT_FILES) | {
+    "src/Types.jl", "src/Factory.jl", "src/Model.jl", "src/Solver.jl",
+    "src/Compute.jl", "src/Reporting.jl",
+    "data/README.md", "data/amino_acids.tsv", "data/conditions.tsv",
+    "data/metabolites.txt", "data/provenance.json", "data/reactions.tsv",
+    "data/stoichiometry.tsv",
+}
+ALLOWED_EXTRA = {".gitattributes", ".gitignore"}
+REPORTS = ("production-versus-budget.csv", "supply-ranges.csv")
+
+
+def require(condition, message):
+    """Stop the release if a required check fails."""
+    if not condition:
+        raise RuntimeError(message)
+
+
+def git(*arguments):
+    """Read the committed release tree."""
+    return subprocess.check_output(["git", *arguments], cwd=ROOT, text=True).strip()
+
+
+def run_julia(student, *arguments, timeout=900):
+    """Run Julia in the student copy with its environment; return (exit code, output)."""
+    result = subprocess.run(
+        ["julia", "--startup-file=no", "--project=.", *arguments],
+        cwd=student, text=True, capture_output=True, timeout=timeout,
+    )
+    return result.returncode, result.stdout + result.stderr
+
+
+def check_contents(student, names):
+    """Check the archive's file list, starter placeholders, track, and local links."""
+    files = {name for name in names if not name.endswith("/")}
+    require(REQUIRED_FILES <= files, f"Missing student files: {sorted(REQUIRED_FILES - files)}")
+    require(files <= REQUIRED_FILES | ALLOWED_EXTRA,
+            f"Unexpected files in archive: {sorted(files - REQUIRED_FILES - ALLOWED_EXTRA)}")
+    prohibited = {".git", ".github", "instructor", "solution", "outputs", "__pycache__"}
+    for name in names:
+        path = Path(name)
+        require(not path.is_absolute() and ".." not in path.parts, f"Invalid archive path: {name}")
+        require(not prohibited.intersection(path.parts), f"Instructor or generated file in archive: {name}")
+
+    source = (student / "src/Compute.jl").read_text()
+    require(source.count('error("Complete ') == 4, "Expected four unfinished starter functions")
+    responses = (student / "responses.md").read_text()
+    require(responses.count("TODO: Write your response.") == 3, "Expected three unanswered questions")
+    require((student / "TRACK.txt").read_text().strip() == "standard", "TRACK.txt must ship as standard")
+
+    for markdown in student.rglob("*.md"):
+        for target in re.findall(r"\]\(([^)]+)\)", markdown.read_text()):
+            if target.startswith(("https:", "http:", "mailto:", "#")):
+                continue
+            require((markdown.parent / target.split("#")[0]).exists(),
+                    f"Broken local link in {markdown.relative_to(student)}: {target}")
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--ref", default="HEAD", help="Committed tree to check")
+    parser.add_argument("--tag", help="Release tag, which must identify the same commit")
+    arguments = parser.parse_args()
+    if arguments.tag:
+        require(git("rev-parse", f"{arguments.tag}^{{commit}}") ==
+                git("rev-parse", f"{arguments.ref}^{{commit}}"), "Release tag does not match the checked commit")
+        canvas = git("show", f"{arguments.ref}:instructor/canvas-assignment-description.html")
+        require(f"/releases/tag/{arguments.tag}\"" in canvas, "Canvas description does not link to the release tag")
+
+    with tempfile.TemporaryDirectory(prefix="ps3-release-") as temporary:
+        directory = Path(temporary)
+        archive = directory / "student.zip"
+        subprocess.run(["git", "archive", "--format=zip", f"--output={archive}", arguments.ref],
+                       cwd=ROOT, check=True)
+        student = directory / "student"
+        with zipfile.ZipFile(archive) as bundle:
+            names = bundle.namelist()
+            bundle.extractall(student)
+        check_contents(student, names)
+        print("Archive contents, starter placeholders, track, and local links passed.", flush=True)
+
+        # Install the recorded environment exactly as the README instructs -
+        code, output = run_julia(student, "-e", "using Pkg; Pkg.instantiate()", timeout=3600)
+        require(code == 0, f"Pkg.instantiate failed:\n{output[-8000:]}")
+        print("Recorded Julia environment installed.", flush=True)
+
+        # The supplied type, builder, and solver must work with the shipped code and environment -
+        (student / "instructor").mkdir()
+        shutil.copy2(ROOT / "instructor/test_solver.jl", student / "instructor")
+        code, output = run_julia(student, "instructor/test_solver.jl")
+        require(code == 0, f"Solver interface checks failed:\n{output[-8000:]}")
+        print("Solver interface checks passed.", flush=True)
+
+        # The unfinished starter must fail clearly on the Standard track and still write a manifest -
+        code, output = run_julia(student, "check_submission.jl")
+        require(code == 1, f"Starter checker should exit 1, not {code}:\n{output[-8000:]}")
+        require("Standard track" in output and "Running testme_part_3.jl" not in output,
+                "Starter checker did not run the Standard track only")
+        require("Status: WORK NEEDS ATTENTION" in output and "READY TO PACKAGE" not in output,
+                "Starter incorrectly reported completion")
+        for number in (1, 2):
+            require(f"Question {number} still has a placeholder" in output, f"Missing warning for question {number}")
+        require("Question 3 still has a placeholder" not in output, "Standard track warned about question 3")
+        manifest = (student / "MANIFEST.txt").read_text()
+        require(manifest.count("some tests failed") == 2, "Manifest did not record both unfinished parts")
+        require("Track checked: standard" in manifest, "Manifest omitted the track")
+        for name in ("Include.jl", "TRACK.txt"):
+            digest = hashlib.sha256((student / name).read_bytes()).hexdigest()
+            require(f"{digest}  {name}" in manifest, f"Manifest omitted the {name} digest")
+        require(not any((student / "outputs" / name).exists() for name in REPORTS),
+                "Starter produced reports")
+        print("Starter failures, question warnings, and manifest passed.", flush=True)
+    print("The student source archive is ready for a draft GitHub release.")
+
+
+if __name__ == "__main__":
+    main()
