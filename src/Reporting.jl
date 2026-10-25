@@ -57,12 +57,12 @@ function write_outputs(assignment, directory)
         error("production_curve returned a nonfinite rate");
 
     # Write the production table -
-    open(joinpath(directory, "production-versus-budget.csv"), "w") do io
-        println(io, "budget_mM_per_h,equal_uM_per_h,optimized_uM_per_h");
-        for row in rows
-            @printf(io, "%.6f,%.9f,%.9f\n", row.budget, row.equal, row.optimized);
-        end
+    io = open(joinpath(directory, "production-versus-budget.csv"), "w");
+    println(io, "budget_mM_per_h,equal_uM_per_h,optimized_uM_per_h");
+    for row in rows
+        @printf(io, "%.6f,%.9f,%.9f\n", row.budget, row.equal, row.optimized);
     end
+    close(io);
 
     # Draw both strategies with distinct colors and line styles -
     theme(:default);
@@ -153,19 +153,19 @@ function write_outputs(assignment, directory)
     end
 
     # Write one optimal allocation for each strategy -
-    open(joinpath(directory, "amino-acid-allocation.csv"), "w") do io
-        println(io, "amino_acid,equal_uptake_mM_per_h,optimized_uptake_mM_per_h,equal_limit_mM_per_h");
-        for (name, j) in zip(model.amino_acids, model.amino_acid_uptake)
-            @printf(
-                io,
-                "%s,%.9f,%.9f,%.9f\n",
-                name,
-                results[:equal]["argmax"][j],
-                results[:optimized]["argmax"][j],
-                1/20,
-            );
-        end
+    io = open(joinpath(directory, "amino-acid-allocation.csv"), "w");
+    println(io, "amino_acid,equal_uptake_mM_per_h,optimized_uptake_mM_per_h,equal_limit_mM_per_h");
+    for (name, j) in zip(model.amino_acids, model.amino_acid_uptake)
+        @printf(
+            io,
+            "%s,%.9f,%.9f,%.9f\n",
+            name,
+            results[:equal]["argmax"][j],
+            results[:optimized]["argmax"][j],
+            1/20,
+        );
     end
+    close(io);
 
     println("Wrote production plot and data tables to ", abspath(directory));
     return rows;
@@ -221,23 +221,23 @@ function write_range_outputs(assignment, directory)
         checked_ranges(assignment, model, 1.0, :optimized, 0.99),
     ];
 
-    open(joinpath(directory, "supply-ranges.csv"), "w") do io
-        println(
-            io,
-            "amino_acid,",
-            join(
-                ["$(l)_$(e)_mM_per_h" for l in labels for e in ("min", "max")],
-                ",",
-            ),
-        );
-        for (k, name) in enumerate(model.amino_acids)
-            print(io, name);
-            for r in ranges
-                @printf(io, ",%.9f,%.9f", tidy(r[k].minimum), tidy(r[k].maximum));
-            end
-            println(io);
+    io = open(joinpath(directory, "supply-ranges.csv"), "w");
+    println(
+        io,
+        "amino_acid,",
+        join(
+            ["$(l)_$(e)_mM_per_h" for l in labels for e in ("min", "max")],
+            ",",
+        ),
+    );
+    for (k, name) in enumerate(model.amino_acids)
+        print(io, name);
+        for r in ranges
+            @printf(io, ",%.9f,%.9f", tidy(r[k].minimum), tidy(r[k].maximum));
         end
+        println(io);
     end
+    close(io);
 
     # Report how many supplies are fixed in each scenario -
     for (label, r) in zip(labels, ranges)
@@ -318,20 +318,20 @@ function write_range_outputs(assignment, directory)
     end
 
     # Write the total widths and fixed-supply counts -
-    open(joinpath(directory, "range-width-versus-budget.csv"), "w") do io
-        println(io, "budget_mM_per_h,equal_total_width_mM_per_h,optimized_total_width_mM_per_h,equal_fixed_supplies,optimized_fixed_supplies");
-        for (k, budget) in enumerate(budgets)
-            @printf(
-                io,
-                "%.6f,%.9f,%.9f,%d,%d\n",
-                budget,
-                tidy(widths[:equal][k]),
-                tidy(widths[:optimized][k]),
-                counts[:equal][k],
-                counts[:optimized][k],
-            );
-        end
+    io = open(joinpath(directory, "range-width-versus-budget.csv"), "w");
+    println(io, "budget_mM_per_h,equal_total_width_mM_per_h,optimized_total_width_mM_per_h,equal_fixed_supplies,optimized_fixed_supplies");
+    for (k, budget) in enumerate(budgets)
+        @printf(
+            io,
+            "%.6f,%.9f,%.9f,%d,%d\n",
+            budget,
+            tidy(widths[:equal][k]),
+            tidy(widths[:optimized][k]),
+            counts[:equal][k],
+            counts[:optimized][k],
+        );
     end
+    close(io);
 
     # Draw the total width across supply budgets -
     w = plot(

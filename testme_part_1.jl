@@ -15,66 +15,67 @@ Base.include(@__MODULE__, joinpath(@__DIR__, "test_support.jl"));
 
 using .PS3Checks; # small networks and independent result checks
 
-# Each case contributes one scored test, including cases whose implementation raises an error.
 model = load_model();
 
-# ----------------------------------------------------------------------------
-# Test cases | One scored assertion per labeled case
-# ----------------------------------------------------------------------------
 
-checks = [
+# ----------------------------------------------------------------------------
+# Run the 24 scored checks | One labeled case, one @test each
+# ----------------------------------------------------------------------------
+# A case whose code raises an error counts as one failed test.
+
+@testset "PS3 Part 1 (24 tests)" begin
+
     # Protein objective -
-    "objective dimensions and type" => () -> begin
+    @testset "objective dimensions and type" begin
         c = protein_objective(model);
+        @test c isa Vector{Float64} && length(c) == 265;
+    end
 
-        c isa Vector{Float64} && length(c) == 265
-    end,
-
-    "objective selects only protein" => () -> begin
+    @testset "objective selects only protein" begin
         c = protein_objective(model);
+        @test c[model.protein] == 1 && count(c .!= 0) == 1;
+    end
 
-        c[model.protein] == 1 && count(!iszero, c) == 1
-    end,
+    @testset "objective follows a changed column order" begin
+        @test protein_objective(toy_model(protein_first=true)) == [1, 0, 0];
+    end
 
-    "objective follows a changed column order" => () ->
-        protein_objective(toy_model(protein_first=true)) == [1, 0, 0],
-
-    "objective preserves the input" => () -> begin
+    @testset "objective preserves the input" begin
         m = deepcopy(model);
         before = deepcopy(m);
         protein_objective(m);
-
-        isequal(m, before)
-    end,
+        @test isequal(m, before);
+    end
 
     # Equal-allocation bounds -
-    "equal bounds are independent copies" => () -> begin
+    @testset "equal bounds are independent copies" begin
         m = deepcopy(model);
         a = allocation_constraints(m, 1.0);
         a.lower[1] = -99;
         a.upper[1] = -99;
+        @test m.lower == model.lower && m.upper == model.upper;
+    end
 
-        m.lower == model.lower && m.upper == model.upper
-    end,
-
-    "equal supply limits" => () ->
-        all(allocation_constraints(model, 1.0).upper[model.amino_acid_uptake] .== 0.05),
-
-    "equal preserves lower bounds" => () ->
-        allocation_constraints(model, 1.0).lower == model.lower,
-
-    "equal preserves other upper bounds" => () -> begin
-        j = setdiff(1:265, model.amino_acid_uptake);
-        allocation_constraints(model, 1.0).upper[j] == model.upper[j]
-    end,
-
-    "equal needs no extra inequality" => () -> begin
+    @testset "equal supply limits" begin
         a = allocation_constraints(model, 1.0);
+        @test all(a.upper[model.amino_acid_uptake] .== 0.05);
+    end
 
-        size(a.A) == (0, 265) && isempty(a.b)
-    end,
+    @testset "equal preserves lower bounds" begin
+        @test allocation_constraints(model, 1.0).lower == model.lower;
+    end
 
-    "equal hand calculation on two supplies" => () -> begin
+    @testset "equal preserves other upper bounds" begin
+        j = setdiff(1:265, model.amino_acid_uptake);
+        @test allocation_constraints(model, 1.0).upper[j] == model.upper[j];
+    end
+
+    @testset "equal needs no extra inequality" begin
+        a = allocation_constraints(model, 1.0);
+        @test size(a.A) == (0, 265) && isempty(a.b);
+    end
+
+    @testset "equal hand calculation on two supplies" begin
         m = toy_model();
         a = allocation_constraints(m, 6.0);
 
@@ -87,34 +88,36 @@ checks = [
         ));
 
         r = solve(calculation; A=a.A, b=a.b);
+        @test r["termination_status"] == JuMP.MOI.OPTIMAL &&
+            isapprox(r["objective_value"], 1.5; atol=1e-8);
+    end
 
-        r["termination_status"] == JuMP.MOI.OPTIMAL &&
-            isapprox(r["objective_value"], 1.5; atol=1e-8)
-    end,
+    @testset "zero equal budget blocks supply" begin
+        a = allocation_constraints(model, 0);
+        @test all(iszero, a.upper[model.amino_acid_uptake]);
+    end
 
-    "zero equal budget blocks supply" => () ->
-        all(iszero, allocation_constraints(model, 0).upper[model.amino_acid_uptake]),
-
-    "equal retains tighter original bounds" => () ->
-        allocation_constraints(model, 10000).upper == model.upper,
+    @testset "equal retains tighter original bounds" begin
+        @test allocation_constraints(model, 10000).upper == model.upper;
+    end
 
     # Optimized-allocation constraint -
-    "optimized retains original bounds" => () -> begin
+    @testset "optimized retains original bounds" begin
         a = allocation_constraints(model, 1; strategy=:optimized);
-        a.lower == model.lower && a.upper == model.upper
-    end,
+        @test a.lower == model.lower && a.upper == model.upper;
+    end
 
-    "optimized inequality selects precisely the supply columns" => () -> begin
+    @testset "optimized inequality selects precisely the supply columns" begin
         a = allocation_constraints(model, 1; strategy=:optimized);
+        @test size(a.A) == (1, 265) && all(a.A[1, model.amino_acid_uptake] .== 1) &&
+            count(a.A .!= 0) == 20;
+    end
 
-        size(a.A) == (1, 265) && all(a.A[1, model.amino_acid_uptake] .== 1) &&
-            count(!iszero, a.A) == 20
-    end,
+    @testset "optimized right-hand side uses the supplied budget" begin
+        @test allocation_constraints(model, 2.75; strategy=:optimized).b == [2.75];
+    end
 
-    "optimized right-hand side uses the supplied budget" => () ->
-        allocation_constraints(model, 2.75; strategy=:optimized).b == [2.75],
-
-    "optimized hand calculation on two supplies" => () -> begin
+    @testset "optimized hand calculation on two supplies" begin
         m = toy_model();
         a = allocation_constraints(m, 6.0; strategy=:optimized);
 
@@ -127,68 +130,53 @@ checks = [
         ));
 
         r = solve(calculation; A=a.A, b=a.b);
+        @test r["termination_status"] == JuMP.MOI.OPTIMAL &&
+            isapprox(r["objective_value"], 2.0; atol=1e-8);
+    end
 
-        r["termination_status"] == JuMP.MOI.OPTIMAL &&
-            isapprox(r["objective_value"], 2.0; atol=1e-8)
-    end,
-
-    "optimized bounds are independent copies" => () -> begin
+    @testset "optimized bounds are independent copies" begin
         m = deepcopy(model);
         a = allocation_constraints(m, 1; strategy=:optimized);
         a.lower[1] = -99;
         a.upper[1] = -99;
-
-        m.lower == model.lower && m.upper == model.upper
-    end,
+        @test m.lower == model.lower && m.upper == model.upper;
+    end
 
     # Input preservation and invalid arguments -
-    "strategies preserve the complete model" => () -> begin
+    @testset "strategies preserve the complete model" begin
         m = deepcopy(model);
         before = deepcopy(m);
         allocation_constraints(m, 0.5);
         allocation_constraints(m, 2; strategy=:optimized);
+        @test isequal(m, before);
+    end
 
-        isequal(m, before)
-    end,
+    @testset "negative budget rejected" begin
+        @test_throws ArgumentError allocation_constraints(model, -1);
+    end
 
-    "negative budget rejected" => () ->
-        throws_type(() -> allocation_constraints(model, -1), ArgumentError),
+    @testset "infinite budget rejected" begin
+        @test_throws ArgumentError allocation_constraints(model, Inf; strategy=:optimized);
+    end
 
-    "infinite budget rejected" => () ->
-        throws_type(
-            () -> allocation_constraints(model, Inf; strategy=:optimized),
-            ArgumentError,
-        ),
+    @testset "NaN budget rejected" begin
+        @test_throws ArgumentError allocation_constraints(model, NaN);
+    end
 
-    "NaN budget rejected" => () ->
-        throws_type(() -> allocation_constraints(model, NaN), ArgumentError),
-
-    "unknown strategy rejected" => () ->
-        throws_type(() -> allocation_constraints(model, 1; strategy=:other), ArgumentError),
+    @testset "unknown strategy rejected" begin
+        @test_throws ArgumentError allocation_constraints(model, 1; strategy=:other);
+    end
 
     # Repeated calls and a zero shared budget -
-    "repeated equal scenarios start from original bounds" => () -> begin
+    @testset "repeated equal scenarios start from original bounds" begin
         m = deepcopy(model);
         allocation_constraints(m, 0);
+        a = allocation_constraints(m, 2);
+        @test all(a.upper[m.amino_acid_uptake] .== 0.1);
+    end
 
-        all(allocation_constraints(m, 2).upper[m.amino_acid_uptake] .== 0.1)
-    end,
-
-    "optimized zero budget is a zero shared allowance" => () -> begin
+    @testset "optimized zero budget is a zero shared allowance" begin
         a = allocation_constraints(toy_model(protein_first=true), 0; strategy=:optimized);
-        a.A == [0.0 1.0 1.0] && a.b == [0.0]
-    end,
-];
-
-
-# ----------------------------------------------------------------------------
-# Run the 24 scored checks
-# ----------------------------------------------------------------------------
-
-@testset "PS3 Part 1 (24 tests)" begin
-    for (label, check) in checks
-        @testset "$label" begin
-            @test check();
-        end
+        @test a.A == [0.0 1.0 1.0] && a.b == [0.0];
     end
 end;

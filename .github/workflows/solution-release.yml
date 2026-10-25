@@ -1,0 +1,78 @@
+name: Solution release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'solution/**'
+      - '.github/workflows/solution-release.yml'
+      - 'instructor/build_solution_release.py'
+      - 'instructor/solution-README.md'
+      - 'instructor/solution-release-notes.md'
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: New tag for this solution release
+        required: true
+        default: ps3-cheme-4800-5800-2026-solutions.1
+        type: string
+
+permissions:
+  contents: write # create the release and attach the tested ZIP
+
+concurrency:
+  group: solution-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: bash
+    env:
+      RELEASE_TAG: ${{ inputs.release_tag || format('ps3-cheme-4800-5800-2026-solutions.{0}', github.run_number) }}
+
+    steps:
+      - name: Check out the selected commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Require a new solution tag
+        run: |
+          if [[ ! "$RELEASE_TAG" =~ ^ps3-cheme-4800-5800-2026-solutions\.[0-9]+$ ]]; then
+            echo "Use a tag such as ps3-cheme-4800-5800-2026-solutions.1" >&2
+            exit 1
+          fi
+          existing_tag=$(git ls-remote --tags origin "refs/tags/$RELEASE_TAG")
+          if [[ -n "$existing_tag" ]]; then
+            echo "This tag already exists. Choose a new solution version." >&2
+            exit 1
+          fi
+
+      - name: Install the course Julia version
+        uses: julia-actions/setup-julia@fa02766e078afaaf09b14210362cee14137e6a32 # v3.0.2
+        with:
+          version: '1.12.7'
+
+      - name: Build the ZIP and test its extracted contents
+        run: python3 instructor/build_solution_release.py
+
+      - name: Create a draft release with the tested ZIP
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release create "$RELEASE_TAG" \
+            dist/PS3-CHEME-4800-5800-Fall-2026-solution.zip \
+            dist/PS3-CHEME-4800-5800-Fall-2026-solution.zip.sha256 \
+            --target "$GITHUB_SHA" \
+            --title "PS3 reference solution — CHEME 4800/5800, Fall 2026" \
+            --notes-file instructor/solution-release-notes.md \
+            --draft \
+            --latest=false
+          release_url=$(gh release view "$RELEASE_TAG" --json url --jq .url)
+          printf 'Solution ZIP tested successfully. [Review and publish the draft release](%s).\n' \
+            "$release_url" >> "$GITHUB_STEP_SUMMARY"

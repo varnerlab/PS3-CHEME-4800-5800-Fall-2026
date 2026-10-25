@@ -83,12 +83,13 @@ function solve(model::MyPrimalFluxBalanceAnalysisCalculationModel;
 
     # Return fluxes only when the solver reports an optimal solution -
     status = JuMP.termination_status(lp);
-    status == JuMP.MOI.OPTIMAL ||
+    if status != JuMP.MOI.OPTIMAL
         return Dict{String,Any}(
             "termination_status" => status,
             "argmax" => nothing,
             "objective_value" => nothing,
         );
+    end
 
     # 4. Return the course example's result fields -
     return Dict{String,Any}(

@@ -54,23 +54,41 @@ Return an empty vector if no issues are detected; this does not grade correctnes
 A missing or unreadable file returns a warning message. The file is unchanged.
 """
 function discussion_issues(path; questions=1:2)
-    isfile(path) || return ["responses.md is missing"];
-    content = try
-        replace(read(path, String), "\r\n" => "\n");
+
+    # Read the response file, with Windows line endings converted -
+    if !isfile(path)
+        return ["responses.md is missing"];
+    end
+    content = "";
+    try
+        content = replace(read(path, String), "\r\n" => "\n");
     catch
         return ["responses.md could not be read"];
     end
+
     answers = Dict{Int,String}();
     issues = String[];
+
     # Separate each numbered prompt from the answer paragraphs that follow it -
     for section in eachmatch(r"(?ms)^[ \t]{0,2}([1-3])\.[ \t]+\*\*.*?(?=^[ \t]{0,2}[1-3]\.[ \t]+\*\*|\z)", content)
         number = parse(Int, section.captures[1]);
-        number in questions || continue;
-        haskey(answers, number) && push!(issues, "Question $number appears more than once");
+        if !(number in questions)
+            continue;
+        end
+        if haskey(answers, number)
+            push!(issues, "Question $number appears more than once");
+        end
+
+        # The answer is everything after the first blank line; drop HTML comments -
         paragraphs = split(section.match, r"\n[ \t]*\n"; limit=2);
-        answer = length(paragraphs) == 2 ? paragraphs[2] : "";
+        answer = "";
+        if length(paragraphs) == 2
+            answer = paragraphs[2];
+        end
         answers[number] = strip(replace(answer, r"(?s)<!--.*?-->" => ""));
     end
+
+    # Report a missing answer or a remaining placeholder -
     for number in questions
         answer = get(answers, number, "");
         if !occursin(r"[\p{L}\p{N}]", answer)
@@ -110,7 +128,12 @@ end
 
 issues = discussion_issues(RESPONSE_PATH);
 advanced_issues = ADVANCED_MODE ? discussion_issues(RESPONSE_PATH; questions=(3,)) : String[];
-required_passed = all(name -> statuses[name] == "all tests passed", required_suites);
+required_passed = true;
+for name in required_suites
+    if statuses[name] != "all tests passed"
+        global required_passed = false;
+    end
+end
 advanced_passed = ADVANCED_MODE && statuses["testme_part_3.jl"] == "all tests passed";
 # Remove earlier reports so outputs/ holds only results from the code just checked -
 for name in ("production-versus-budget.csv", "production-versus-budget.png",
@@ -149,41 +172,51 @@ end
 required_ready = required_passed && report_status == "plot and data tables generated" && isempty(issues);
 advanced_ready = required_ready && advanced_passed &&
     advanced_report_status == "plot and data tables generated" && isempty(advanced_issues);
-advanced_status = !ADVANCED_MODE ? "not selected in TRACK.txt (optional)" :
-    advanced_ready ? "checks passed; one Magic Point pending teaching-team review" : "WORK NEEDS ATTENTION";
+if !ADVANCED_MODE
+    advanced_status = "not selected in TRACK.txt (optional)";
+elseif advanced_ready
+    advanced_status = "checks passed; one Magic Point pending teaching-team review";
+else
+    advanced_status = "WORK NEEDS ATTENTION";
+end
 
 # Record the test status and fingerprint every submitted source file -
 files = [joinpath(@__DIR__, "Include.jl"), TRACK_PATH, RESPONSE_PATH];
 for (directory, _, filenames) in walkdir(joinpath(@__DIR__, "src"))
-    # Fingerprint the implementation actually loaded, including in solution mode -
-    append!(files, [joinpath(directory, name) == joinpath(@__DIR__, "src", "Compute.jl") ?
-        COMPUTE_PATH : joinpath(directory, name) for name in filenames]);
-end
-open(joinpath(CHECK_ROOT, "MANIFEST.txt"), "w") do io
-    println(io, SOLUTION_MODE ? "PS3 instructor reference solution manifest" :
-        "PS3 CHEME 4800/5800 Fall 2026 submission manifest");
-    println(io, "Generated: ", Dates.now());
-    println(io, "Track checked: ", ADVANCED_MODE ? "advanced" : "standard");
-    for name in sort(collect(keys(statuses)))
-        println(io, name, ": ", statuses[name]);
-    end
-    println(io, "Outputs: ", report_status);
-    println(io, "Discussion: ", isempty(issues) ? "no unanswered prompts detected; instructor review required" : join(issues, "; "));
-    println(io, "Required work: ", required_ready ? "checks passed; instructor review required" : "WORK NEEDS ATTENTION");
-    println(io, "Advanced: ", advanced_status);
-    if ADVANCED_MODE
-        println(io, "Advanced outputs: ", advanced_report_status);
-        println(io, "Advanced discussion: ", isempty(advanced_issues) ? "no unanswered prompts detected; instructor review required" : join(advanced_issues, "; "));
-    end
-    for path in sort(files)
-        relative = replace(relpath(path, @__DIR__), '\\' => '/');
-        try
-            println(io, bytes2hex(open(sha256, path)), "  ", relative);
-        catch
-            println(io, "MISSING OR UNREADABLE  ", relative);
+    for name in filenames
+        # Fingerprint the implementation actually loaded, including in solution mode -
+        path = joinpath(directory, name);
+        if path == joinpath(@__DIR__, "src", "Compute.jl")
+            path = COMPUTE_PATH;
         end
+        push!(files, path);
     end
 end
+io = open(joinpath(CHECK_ROOT, "MANIFEST.txt"), "w");
+println(io, SOLUTION_MODE ? "PS3 instructor reference solution manifest" :
+    "PS3 CHEME 4800/5800 Fall 2026 submission manifest");
+println(io, "Generated: ", Dates.now());
+println(io, "Track checked: ", ADVANCED_MODE ? "advanced" : "standard");
+for name in sort(collect(keys(statuses)))
+    println(io, name, ": ", statuses[name]);
+end
+println(io, "Outputs: ", report_status);
+println(io, "Discussion: ", isempty(issues) ? "no unanswered prompts detected; instructor review required" : join(issues, "; "));
+println(io, "Required work: ", required_ready ? "checks passed; instructor review required" : "WORK NEEDS ATTENTION");
+println(io, "Advanced: ", advanced_status);
+if ADVANCED_MODE
+    println(io, "Advanced outputs: ", advanced_report_status);
+    println(io, "Advanced discussion: ", isempty(advanced_issues) ? "no unanswered prompts detected; instructor review required" : join(advanced_issues, "; "));
+end
+for path in sort(files)
+    relative = replace(relpath(path, @__DIR__), '\\' => '/');
+    try
+        println(io, bytes2hex(open(sha256, path)), "  ", relative);
+    catch
+        println(io, "MISSING OR UNREADABLE  ", relative);
+    end
+end
+close(io);
 
 println("\nSubmission summary");
 for name in sort(collect(keys(statuses)))

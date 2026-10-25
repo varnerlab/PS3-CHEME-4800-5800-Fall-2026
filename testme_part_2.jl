@@ -16,141 +16,174 @@ using .PS3Checks; # small networks and independent result checks
 
 model = load_model();
 
-# ----------------------------------------------------------------------------
-# Test cases | One scored assertion per labeled case
-# ----------------------------------------------------------------------------
 
-checks = [
+# ----------------------------------------------------------------------------
+# Run the 24 scored checks | One labeled case, one @test each
+# ----------------------------------------------------------------------------
+# A case whose code raises an error counts as one failed test.
+
+@testset "PS3 Part 2 (24 tests)" begin
+
     # Output layout, units, and input preservation -
-    "toy production rates and unit conversion" => () ->
-        curve_close(only(production_curve(toy_model(), [6.0])), 6, 1500, 2000),
+    @testset "toy production rates and unit conversion" begin
+        rows = production_curve(toy_model(), [6.0]);
+        @test curve_close(only(rows), 6, 1500, 2000);
+    end
 
-    "input budget order retained" => () -> begin
+    @testset "input budget order retained" begin
         rows = production_curve(toy_model(), [6.0, 0.0, 3.0]);
 
-        length(rows) == 3 &&
-            all(curve_close(row, b, 250b, 1000b/3) for (row, b) in zip(rows, [6, 0, 3]))
-    end,
+        # Each row must match its own budget; stop checking at the first mismatch -
+        all_close = length(rows) == 3;
+        for (row, b) in zip(rows, [6, 0, 3])
+            all_close = all_close && curve_close(row, b, 250b, 1000b/3);
+        end
+        @test all_close;
+    end
 
-    "duplicate budgets retained" => () -> begin
+    @testset "duplicate budgets retained" begin
         rows = production_curve(toy_model(), [3.0, 3.0]);
+        @test length(rows) == 2 && rows[1] == rows[2];
+    end
 
-        length(rows) == 2 && rows[1] == rows[2]
-    end,
-
-    "empty budget vector" => () -> begin
+    @testset "empty budget vector" begin
         rows = production_curve(model, Float64[]);
+        @test rows isa AbstractVector && isempty(rows);
+    end
 
-        rows isa AbstractVector && isempty(rows)
-    end,
-
-    "model and budget vector preserved" => () -> begin
+    @testset "model and budget vector preserved" begin
         m = deepcopy(model);
         before = deepcopy(m);
         budgets = [1.0, 0.0];
         production_curve(m, budgets);
-
-        isequal(m, before) && budgets == [1.0, 0.0]
-    end,
+        @test isequal(m, before) && budgets == [1.0, 0.0];
+    end
 
     # Production rates for the supplied deGFP model -
-    "deGFP production without external amino acids" => () ->
-        curve_close(only(production_curve(model, [0])), 0, 2.6611, 2.6611),
+    @testset "deGFP production without external amino acids" begin
+        rows = production_curve(model, [0]);
+        @test curve_close(only(rows), 0, 2.6611, 2.6611);
+    end
 
-    "equal production at 0.5" => () ->
-        isapprox(only(production_curve(model, [0.5])).equal, 4.4197; atol=1e-3),
+    @testset "equal production at 0.5" begin
+        rows = production_curve(model, [0.5]);
+        @test isapprox(only(rows).equal, 4.4197; atol=1e-3);
+    end
 
-    "optimized production at 0.5" => () ->
-        isapprox(only(production_curve(model, [0.5])).optimized, 5.3399; atol=1e-3),
+    @testset "optimized production at 0.5" begin
+        rows = production_curve(model, [0.5]);
+        @test isapprox(only(rows).optimized, 5.3399; atol=1e-3);
+    end
 
-    "equal production at 1.0" => () ->
-        isapprox(only(production_curve(model, [1])).equal, 6.0035; atol=1e-3),
+    @testset "equal production at 1.0" begin
+        rows = production_curve(model, [1]);
+        @test isapprox(only(rows).equal, 6.0035; atol=1e-3);
+    end
 
-    "optimized production at 1.0" => () ->
-        isapprox(only(production_curve(model, [1])).optimized, 7.4432; atol=1e-3),
+    @testset "optimized production at 1.0" begin
+        rows = production_curve(model, [1]);
+        @test isapprox(only(rows).optimized, 7.4432; atol=1e-3);
+    end
 
-    "equal production at 2.0" => () ->
-        isapprox(only(production_curve(model, [2])).equal, 8.9265; atol=1e-3),
+    @testset "equal production at 2.0" begin
+        rows = production_curve(model, [2]);
+        @test isapprox(only(rows).equal, 8.9265; atol=1e-3);
+    end
 
-    "optimized production at 2.0" => () ->
-        isapprox(only(production_curve(model, [2])).optimized, 11.1758; atol=1e-3),
+    @testset "optimized production at 2.0" begin
+        rows = production_curve(model, [2]);
+        @test isapprox(only(rows).optimized, 11.1758; atol=1e-3);
+    end
 
-    "both strategies reach the expression limit" => () ->
-        curve_close(only(production_curve(model, [4])), 4, 11.1758, 11.1758),
+    @testset "both strategies reach the expression limit" begin
+        rows = production_curve(model, [4]);
+        @test curve_close(only(rows), 4, 11.1758, 11.1758);
+    end
 
     # Curve behavior and changed model conditions -
-    "production is nondecreasing" => () -> begin
+    @testset "production is nondecreasing" begin
         rows = production_curve(model, collect(0:0.5:4));
 
-        all(diff([r.equal for r in rows]) .>= -1e-5) &&
-            all(diff([r.optimized for r in rows]) .>= -1e-5)
-    end,
+        # Collect each strategy's rates, then compare neighboring budgets -
+        equal = Float64[];
+        optimized = Float64[];
+        for r in rows
+            push!(equal, r.equal);
+            push!(optimized, r.optimized);
+        end
+        @test all(diff(equal) .>= -1e-5) && all(diff(optimized) .>= -1e-5);
+    end
 
-    "optimized production is at least equal production" => () ->
-        all(r.optimized >= r.equal - 1e-5 for r in production_curve(model, collect(0:0.5:4))),
+    @testset "optimized production is at least equal production" begin
+        rows = production_curve(model, collect(0:0.5:4));
 
-    "tighter protein bound is respected" => () ->
-        curve_close(only(production_curve(toy_model(ceiling=0.4), [6])), 6, 400, 400),
+        # Stop checking at the first budget where optimized falls below equal -
+        at_least_equal = true;
+        for r in rows
+            at_least_equal = at_least_equal && r.optimized >= r.equal - 1e-5;
+        end
+        @test at_least_equal;
+    end
 
-    "curve follows a changed protein column" => () ->
-        curve_close(
-            only(production_curve(toy_model(protein_first=true), [6])),
-            6,
-            1500,
-            2000,
-        ),
+    @testset "tighter protein bound is respected" begin
+        rows = production_curve(toy_model(ceiling=0.4), [6]);
+        @test curve_close(only(rows), 6, 400, 400);
+    end
 
-    "different glucose condition changes production" => () ->
-        curve_close(
-            only(production_curve(load_model(glucose_limit=0.5), [1])),
-            1,
-            3.3952,
-            4.7493,
-        ),
+    @testset "curve follows a changed protein column" begin
+        rows = production_curve(toy_model(protein_first=true), [6]);
+        @test curve_close(only(rows), 6, 1500, 2000);
+    end
+
+    @testset "different glucose condition changes production" begin
+        rows = production_curve(load_model(glucose_limit=0.5), [1]);
+        @test curve_close(only(rows), 1, 3.3952, 4.7493);
+    end
 
     # Invalid inputs and solver failures -
-    "negative budget rejected" => () ->
-        throws_type(() -> production_curve(model, [-1.0]), ArgumentError),
+    @testset "negative budget rejected" begin
+        @test_throws ArgumentError production_curve(model, [-1.0]);
+    end
 
-    "infinite budget rejected" => () ->
-        throws_type(() -> production_curve(model, [Inf]), ArgumentError),
+    @testset "infinite budget rejected" begin
+        @test_throws ArgumentError production_curve(model, [Inf]);
+    end
 
-    "NaN budget rejected" => () ->
-        throws_type(() -> production_curve(model, [NaN]), ArgumentError),
+    @testset "NaN budget rejected" begin
+        @test_throws ArgumentError production_curve(model, [NaN]);
+    end
 
-    "nonoptimal status is handled before reading fluxes" => () -> begin
+    @testset "nonoptimal status is handled before reading fluxes" begin
         m = toy_model();
         m.lower[m.protein] = 1;
 
         # Either strategy may be solved first; the message names the one that failed -
-        throws_type(
-            () -> production_curve(m, [0]),
-            ErrorException;
-            contains=["0", r"equal|optimized", "INFEASIBLE"],
-        )
-    end,
+        message = "";
+        try
+            production_curve(m, [0]);
+        catch caught
+            if caught isa ErrorException
+                message = sprint(showerror, caught);
+            end
+        end
+        @test occursin("0", message) && occursin(r"equal|optimized", message) &&
+            occursin("INFEASIBLE", message);
+    end
 
-    "invalid later budget rejected" => () ->
-        throws_type(() -> production_curve(model, [1.0, -0.1]), ArgumentError),
+    @testset "invalid later budget rejected" begin
+        @test_throws ArgumentError production_curve(model, [1.0, -0.1]);
+    end
 
     # Independent feasibility checks -
-    "real allocations satisfy balances, bounds, and budgets" => () ->
-        all(
-            valid_real_solution(model, b, strategy)
-            for b in (0.0, 0.5, 1.0, 2.0, 4.0)
+    @testset "real allocations satisfy balances, bounds, and budgets" begin
+
+        # Stop checking at the first scenario that fails -
+        all_valid = true;
+        for b in (0.0, 0.5, 1.0, 2.0, 4.0)
             for strategy in (:equal, :optimized)
-        ),
-];
-
-
-# ----------------------------------------------------------------------------
-# Run the 24 scored checks
-# ----------------------------------------------------------------------------
-
-@testset "PS3 Part 2 (24 tests)" begin
-    for (label, check) in checks
-        @testset "$label" begin
-            @test check();
+                all_valid = all_valid && valid_real_solution(model, b, strategy);
+            end
         end
+        @test all_valid;
     end
 end;

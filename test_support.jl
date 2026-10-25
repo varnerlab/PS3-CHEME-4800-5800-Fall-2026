@@ -9,7 +9,7 @@ import JuMP; # solver termination status
 
 using ..CellFreeProduction; # implementation loaded by the current test suite
 
-export toy_model, swap_model, throws_type, curve_close, ranges_close, valid_real_solution;
+export toy_model, swap_model, curve_close, ranges_close, valid_real_solution;
 
 # ----------------------------------------------------------------------------
 # Test networks
@@ -91,31 +91,6 @@ end
 
 
 # ----------------------------------------------------------------------------
-# Exception checks
-# ----------------------------------------------------------------------------
-
-"""
-    throws_type(f, T; contains=String[]) -> Bool
-
-Call the zero-argument function `f`. Return true only if it throws an exception
-of type `T` whose printed message contains every string or matches every regex in
-`contains`. Return false if no exception is thrown, the type differs, or a required
-pattern is absent.
-Catch the exception for the test; any side effects of calling `f` still occur.
-"""
-function throws_type(f, T; contains=String[])
-
-    try
-        f();
-    catch e
-        return e isa T && all(s -> occursin(s, sprint(showerror, e)), contains);
-    end
-
-    return false;
-end
-
-
-# ----------------------------------------------------------------------------
 # Production and range comparisons
 # ----------------------------------------------------------------------------
 
@@ -187,20 +162,26 @@ function valid_real_solution(model, budget, strategy)
     ));
 
     result = solve(calculation; A=limits.A, b=limits.b);
-    result["termination_status"] == JuMP.MOI.OPTIMAL || return false;
+    if result["termination_status"] != JuMP.MOI.OPTIMAL
+        return false;
+    end
 
     # Check balances, original bounds, and the shared supply budget -
     v = result["argmax"];
     supplies = v[model.amino_acid_uptake];
 
-    common = maximum(abs, model.S * v) <= 1e-7 &&
+    valid = maximum(abs, model.S * v) <= 1e-7 &&
         all(model.lower .- 1e-7 .<= v) &&
         all(v .<= model.upper .+ 1e-7) &&
         all(supplies .>= -1e-7) &&
         sum(supplies) <= budget + 1e-7;
 
     # Equal allocation also limits each of the 20 individual supplies -
-    return common && (strategy == :optimized || all(supplies .<= budget / 20 + 1e-7));
+    if valid && strategy == :equal
+        valid = all(supplies .<= budget / 20 + 1e-7);
+    end
+
+    return valid;
 end
 
 

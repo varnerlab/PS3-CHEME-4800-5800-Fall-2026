@@ -20,10 +20,15 @@ identifier is absent. Leave the model unchanged.
 """
 function reaction_index(model, id::AbstractString)
 
-    j = findfirst(==(id), model.reactions);
-    isnothing(j) && throw(ArgumentError("unknown reaction: $id"));
+    # Return the first column whose identifier matches -
+    for j in 1:length(model.reactions)
+        if model.reactions[j] == id
+            return j;
+        end
+    end
 
-    return j;
+    # No column matched -
+    throw(ArgumentError("unknown reaction: $id"));
 end
 
 

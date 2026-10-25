@@ -27,8 +27,8 @@ so student functions can identify the failing budget and strategy. Part 3 cites 
   [range table](reference/supply-ranges.csv),
   [range-width plot](reference/range-width-versus-budget.png), and
   [range-width table](reference/range-width-versus-budget.csv).
-- The local, Git-ignored [reference solution](../solution/README.md) contains
-  completed code and sample written responses.
+- The [reference solution](../solution/README.md) contains completed code and
+  model written responses.
 - [The student ZIP](artifacts/PS3-CHEME-4800-5800-Fall-2026-student.zip)
   contains starter code and data, with no instructor files, outputs, or solutions.
 
@@ -102,6 +102,35 @@ That check requires NumPy and SciPy and the source revision recorded in
 The source repository is read only. To regenerate the teaching data from that
 pinned checkout, run `python3 instructor/import_model.py /path/to/checkout`.
 
+## Releasing the reference solution
+
+The reference solution stayed untracked until the initial submission deadline
+passed. It is now tracked in `solution/`; `.gitattributes` still keeps it out of
+the student source archive. Before the release, the test scripts, test support,
+checker, driver, and supplied `Model.jl`, `Solver.jl`, and `Reporting.jl` were
+rewritten without closures, `do` blocks, or ternary chains. The old and new test
+scripts gave identical per-case results on the starter, the reference, and ten
+faulty implementations, and the reference tables are byte-identical.
+
+The [Solution release Action](../.github/workflows/solution-release.yml) runs
+[build_solution_release.py](build_solution_release.py), which builds
+`PS3-CHEME-4800-5800-Fall-2026-solution.zip`, extracts it, installs its Julia
+environment, and runs the three test scripts and the submission checker on its
+contents. The ZIP puts the reference `Compute.jl` in `src/`, the model answers in
+`responses.md`, the original starter in `starter/`, and `advanced` in
+`TRACK.txt`. Its README comes from [solution-README.md](solution-README.md). The
+Action attaches the ZIP and its SHA-256 checksum to a new **draft** release whose
+notes come from [solution-release-notes.md](solution-release-notes.md).
+
+The Action runs when changes to `solution/`, the workflow, the builder, or the
+solution release text are pushed to `main`. Its tag is
+`ps3-cheme-4800-5800-2026-solutions.N`, where `N` is the workflow run number;
+**Actions → Solution release → Run workflow** accepts an explicit new tag. An
+existing tag is never overwritten. Review the draft linked in the run summary and
+publish it. To build the same ZIP locally, run
+`python3 instructor/build_solution_release.py`; the tested ZIP and checksum are
+written to the ignored `dist/` directory.
+
 ## Modeling choices
 
 The stoichiometric matrix and original kinetic formulas are preserved. Glucose
@@ -155,7 +184,7 @@ the validation and build scripts. The builder refuses a
 release package with dates still marked to be announced. It uses an explicit
 allowlist and checks that the four starter errors remain in `src/Compute.jl`.
 
-The reference code, sample answers, and generated reference outputs are kept
+The reference code, model answers, and generated reference outputs are kept
 outside the student archive. Preserve the original attribution in
 [THIRD_PARTY_NOTICES.txt](../THIRD_PARTY_NOTICES.txt). The source and data can be
 released under the included permission notices when publication is authorized.

@@ -3,6 +3,7 @@ __pycache__/
 outputs/
 MANIFEST.txt
 *.zip
-solution/
+dist/
+instructor/reviews/**/solution/
 instructor/validation-output/
 instructor/reference/

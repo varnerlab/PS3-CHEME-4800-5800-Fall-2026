@@ -30,7 +30,9 @@ advanced_mode = "--solution" in ARGS || track == "advanced";
 output_directory = "--solution" in ARGS ?
     joinpath(@__DIR__, "solution", "outputs") : joinpath(@__DIR__, "outputs");
 
-"--solution" in ARGS && println("Running the instructor reference solution.");
+if "--solution" in ARGS
+    println("Running the instructor reference solution.");
+end
 
 
 # 3. Write the Part 2 production plot and allocation tables -
